@@ -106,9 +106,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void blockPlayer(bool state)
+    public void blockPlayerToggle()
     {
-
+        if (blockPlayer)
+        {
+            blockPlayer = false;
+        }
+        else
+        {
+            blockPlayer = true;
+        }
     }
 
     void Update()

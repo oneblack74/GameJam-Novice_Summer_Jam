@@ -35,7 +35,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (dialogue.key == key)
             {
-                textDialogue.text = dialogue.sentences;
+                StartCoroutine(DisplayTextCoroutine(dialogue.sentences));
                 GameManager.Instance.PlayAudioClip(dialogue.voice);
                 Debug.Log("Play dialogue: " + dialogue.key);
                 StartCoroutine(PlayDialogueCoroutine(dialogue.voice.length + 1f));
@@ -58,6 +58,16 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         StopDialogue();
+    }
+
+    private IEnumerator DisplayTextCoroutine(string text)
+    {
+        textDialogue.text = ""; // Réinitialiser le texte
+        foreach (char letter in text.ToCharArray())
+        {
+            textDialogue.text += letter;
+            yield return new WaitForSeconds(0.05f); // Ajustez le délai pour contrôler la vitesse de l'affichage
+        }
     }
 }
 

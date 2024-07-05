@@ -7,8 +7,8 @@ public class Interactable : MonoBehaviour
 {
     private Outline outline;
 
-    private int frameFade = 30;
-    private int tmpFading = 30;
+    private int frameFade = 3;
+    private int tmpFading = 3;
 
     private bool lookedAt = false;
 

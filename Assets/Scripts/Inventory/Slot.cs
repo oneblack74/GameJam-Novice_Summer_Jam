@@ -38,12 +38,6 @@ public class Slot
     {
         if (this.item == item)
         {
-            if (this.quantity + quantity > item.GetMaxStack)
-            {
-                int restant = quantity - (item.GetMaxStack - this.quantity);
-                this.quantity = item.GetMaxStack;
-                return (this.item, restant);
-            }
             this.quantity += quantity;
             return (this.item, 0);
         }

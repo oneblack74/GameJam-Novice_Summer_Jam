@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
     private CharacterController characterController;
-
+    private Inventory inventory;
 
     private bool isMoving = false;
 
@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out lookingAt, grabRange, layerMask))
         {
             lookingAt.transform.GetComponent<Interactable>().ToggleOutline();
-            Debug.Log(lookingAt);
         }
     }
 
@@ -83,11 +82,24 @@ public class PlayerController : MonoBehaviour
         lookingAt.transform.GetComponent<IInteractable>().Interact();
     }
 
+    public void AddItem(ItemDefinition item)
+    {
+        inventory.AddItemFast(item, 1);
+    }
+
+    public void RemoveItem(ItemDefinition item)
+    {
+        int res = inventory.GetItemIndex(item.GetID);
+        if (res != -1)
+        {
+            inventory.RemoveItem(res, 1);
+        }
+    }
+
     void Update()
     {
         HandleCamRotation();
         LookAtInteratable();
-
         moveValue = moveAction.ReadValue<Vector2>();
     }
 

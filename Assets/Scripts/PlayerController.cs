@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void blockPlayerToggle()
+    public void BlockPlayerToggle()
     {
         if (blockPlayer)
         {

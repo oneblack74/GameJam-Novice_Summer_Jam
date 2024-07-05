@@ -33,4 +33,13 @@ public static class FileManager
         // désérialisation du fichier
         return JsonUtility.FromJson<T>(json);
     }
+
+    public static void DeleteFile(string filename)
+    {
+        // chemin du fichier
+        string path = Path.Combine(Application.persistentDataPath, filename);
+
+        // suppression du fichier
+        File.Delete(path);
+    }
 }

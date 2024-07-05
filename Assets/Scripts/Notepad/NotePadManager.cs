@@ -15,6 +15,11 @@ public class NotePadManager : MonoBehaviour
     private bool isNotePadOpen = false;
 
     private List<string> notePadData;
+    public List<string> NotePadData
+    {
+        get { return notePadData; }
+        set { notePadData = value; }
+    }
     private int numPage = 0;
     [SerializeField] private int nbPage = 3;
 
@@ -94,6 +99,22 @@ public class NotePadManager : MonoBehaviour
 
 
         nextPage.gameObject.SetActive(true);
+        inputField.text = notePadData[numPage];
+    }
+
+    [ContextMenu("SaveNotePadData")]
+    public void SaveNotePadData()
+    {
+        notePadData[numPage] = inputField.text;
+        SaveData.Instance.data.notePadData = notePadData;
+        SaveData.Instance.Save();
+    }
+
+    [ContextMenu("LoadNotePadData")]
+    public void LoadNotePadData()
+    {
+        SaveData.Instance.Load();
+        notePadData = SaveData.Instance.data.notePadData;
         inputField.text = notePadData[numPage];
     }
 }

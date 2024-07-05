@@ -10,6 +10,7 @@ public static class FileManager
 
         // chemin du fichier
         string path = Path.Combine(Application.persistentDataPath, filename);
+        Debug.Log("Save as: " + path);
 
         // écriture du fichier
         File.WriteAllText(path, json);

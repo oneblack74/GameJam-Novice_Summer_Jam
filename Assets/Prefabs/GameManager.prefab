@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9443967b51ed6849b9ed6d9ea439f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   inputs: {fileID: 2626615416817086871}
 --- !u!114 &2626615416817086871
 MonoBehaviour:
@@ -76,3 +77,6 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerControl
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+=======
+  inputs: {fileID: 914205983781125396, guid: f85bf7c485ae76b4ab85bb74a3094ac3, type: 3}
+>>>>>>> Stashed changes

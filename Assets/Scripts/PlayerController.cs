@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Inventory inventory;
 
     private bool isMoving = false;
+    private bool blockPlayer = false;
 
     [SerializeField] private float speed = 0.12f;
     [SerializeField] private float mouseSensitivity = 1f;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private float mouseVerticalRotation = 0;
 
     private RaycastHit lookingAt;
+    private bool lookAtSomething;
 
 
     // Start is called before the first frame update
@@ -73,13 +75,21 @@ public class PlayerController : MonoBehaviour
         int layerMask = 1 << 6;
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out lookingAt, grabRange, layerMask))
         {
+            lookAtSomething = true;
             lookingAt.transform.GetComponent<Interactable>().ToggleOutline();
+        }
+        else
+        {
+            lookAtSomething = false;
         }
     }
 
     private void Use(InputAction.CallbackContext context)
     {
-        lookingAt.transform.GetComponent<IInteractable>().Interact();
+        if (lookAtSomething)
+        {
+            lookingAt.transform.GetComponent<IInteractable>().Interact();
+        }
     }
 
     public void AddItem(ItemDefinition item)
@@ -96,15 +106,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void blockPlayer(bool state)
+    {
+
+    }
+
     void Update()
     {
-        HandleCamRotation();
-        LookAtInteratable();
-        moveValue = moveAction.ReadValue<Vector2>();
+        if (!blockPlayer)
+        {
+            HandleCamRotation();
+            LookAtInteratable();
+            moveValue = moveAction.ReadValue<Vector2>();
+        }
     }
 
     void FixedUpdate()
     {
-        HandleMovement();
+        if (!blockPlayer)
+        {
+            HandleMovement();
+        }
     }
 }

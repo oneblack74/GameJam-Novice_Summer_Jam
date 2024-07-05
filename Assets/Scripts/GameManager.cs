@@ -46,4 +46,16 @@ public class GameManager : MonoBehaviour
     {
         get { return fileSaveName; }
     }
+
+    public void LockCursor(bool state)
+    {
+        if (state == true)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 }

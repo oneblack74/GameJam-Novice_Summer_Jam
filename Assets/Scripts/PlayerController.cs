@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         moveAction = manager.GetInputs.actions["Move"];
         lookAction = manager.GetInputs.actions["Look"];
         manager.LockCursor(true);
+        manager.inputs.actions["Use"].performed += Use;
     }
 
     private void HandleCamRotation()
@@ -73,13 +74,20 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out lookingAt, grabRange, layerMask))
         {
             lookingAt.transform.GetComponent<Interactable>().ToggleOutline();
+            Debug.Log(lookingAt);
         }
+    }
+
+    private void Use(InputAction.CallbackContext context)
+    {
+        lookingAt.transform.GetComponent<IInteractable>().Interact();
     }
 
     void Update()
     {
         HandleCamRotation();
         LookAtInteratable();
+
         moveValue = moveAction.ReadValue<Vector2>();
     }
 

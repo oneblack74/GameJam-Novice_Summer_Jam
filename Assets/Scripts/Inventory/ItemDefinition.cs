@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ItemDefinition", menuName = "TE/ItemDefinition", order = 0)]
+[CreateAssetMenu(fileName = "ItemDefinition", menuName = "Custom/ItemDefinition", order = 0)]
 
 public class ItemDefinition : ScriptableObject
 {

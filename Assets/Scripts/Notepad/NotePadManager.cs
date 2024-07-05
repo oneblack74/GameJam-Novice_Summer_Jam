@@ -14,8 +14,9 @@ public class NotePadManager : MonoBehaviour
     [SerializeField] private GameObject notePad;
     private bool isNotePadOpen = false;
     private bool haveNotePad = false;
-
-    private List<string> notePadData;
+    [SerializeField] private GameObject crossHair;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private List<string> notePadData;
     public List<string> NotePadData
     {
         get { return notePadData; }
@@ -24,13 +25,10 @@ public class NotePadManager : MonoBehaviour
     private int numPage = 0;
     [SerializeField] private int nbPage = 3;
 
-    void Awake()
-    {
-        gameManager = GameManager.Instance;
-    }
 
     void Start()
     {
+        gameManager = GameManager.Instance;
         gameManager.inputs.actions["OpenNotepad"].performed += OpenNotePad;
         notePadData = new List<string>();
         for (int i = 0; i < nbPage; i++)
@@ -40,19 +38,20 @@ public class NotePadManager : MonoBehaviour
         inputField.text = notePadData[0];
     }
 
-    public void HandlerTextChange()
-    {
-        Debug.Log("Text changed");
-    }
-
     private void OpenNotePad(InputAction.CallbackContext context)
     {
+        Debug.Log("OpenNotePad");
         if (haveNotePad)
         {
             isNotePadOpen = !isNotePadOpen;
+            if (crossHair != null)
+                crossHair.SetActive(!isNotePadOpen);
+            if (playerController != null)
+                playerController.BlockPlayerToggle();
             notePad.SetActive(isNotePadOpen);
             if (isNotePadOpen)
             {
+                gameManager.LockCursor(false);
                 inputField.text = notePadData[numPage];
                 if (numPage == 0)
                 {
@@ -69,6 +68,10 @@ public class NotePadManager : MonoBehaviour
                     previousPage.gameObject.SetActive(true);
                     nextPage.gameObject.SetActive(true);
                 }
+            }
+            else
+            {
+                gameManager.LockCursor(true);
             }
         }
     }
@@ -99,7 +102,8 @@ public class NotePadManager : MonoBehaviour
     public void ActiveNotePad()
     {
         haveNotePad = true;
-        notePadData = SaveData.Instance.data.notePadData;
+        if (SaveData.Instance.fileIsExist)
+            notePadData = SaveData.Instance.data.notePadData;
         InfosManager.Instance.OpenInfoPanel("GetNotePad");
     }
 

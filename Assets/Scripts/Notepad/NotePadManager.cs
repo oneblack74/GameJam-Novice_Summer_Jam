@@ -13,6 +13,7 @@ public class NotePadManager : MonoBehaviour
     [SerializeField] private Button previousPage;
     [SerializeField] private GameObject notePad;
     private bool isNotePadOpen = false;
+    private bool haveNotePad = false;
 
     private List<string> notePadData;
     public List<string> NotePadData
@@ -42,25 +43,28 @@ public class NotePadManager : MonoBehaviour
 
     private void OpenNotePad(InputAction.CallbackContext context)
     {
-        isNotePadOpen = !isNotePadOpen;
-        notePad.SetActive(isNotePadOpen);
-        if (isNotePadOpen)
+        if (haveNotePad)
         {
-            inputField.text = notePadData[numPage];
-            if (numPage == 0)
+            isNotePadOpen = !isNotePadOpen;
+            notePad.SetActive(isNotePadOpen);
+            if (isNotePadOpen)
             {
-                previousPage.gameObject.SetActive(false);
-                nextPage.gameObject.SetActive(true);
-            }
-            else if (numPage == nbPage - 1)
-            {
-                previousPage.gameObject.SetActive(true);
-                nextPage.gameObject.SetActive(false);
-            }
-            else
-            {
-                previousPage.gameObject.SetActive(true);
-                nextPage.gameObject.SetActive(true);
+                inputField.text = notePadData[numPage];
+                if (numPage == 0)
+                {
+                    previousPage.gameObject.SetActive(false);
+                    nextPage.gameObject.SetActive(true);
+                }
+                else if (numPage == nbPage - 1)
+                {
+                    previousPage.gameObject.SetActive(true);
+                    nextPage.gameObject.SetActive(false);
+                }
+                else
+                {
+                    previousPage.gameObject.SetActive(true);
+                    nextPage.gameObject.SetActive(true);
+                }
             }
         }
     }
@@ -85,6 +89,14 @@ public class NotePadManager : MonoBehaviour
 
         previousPage.gameObject.SetActive(true);
         inputField.text = notePadData[numPage];
+    }
+
+    [ContextMenu("ActiveNotePad")]
+    public void ActiveNotePad()
+    {
+        haveNotePad = true;
+        InfosManager.Instance.OpenInfoPanel("GetNotePad");
+        OpenNotePad(new InputAction.CallbackContext());
     }
 
     public void PreviousPage()

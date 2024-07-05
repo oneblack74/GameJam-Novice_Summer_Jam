@@ -5,9 +5,10 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Instance = null;
 
     public PlayerInput inputs;
+    private string fileSaveName;
 
     void Awake()
     {
@@ -34,5 +35,15 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public PlayerInput GetInputs
+    {
+        get { return inputs; }
+    }
+
+    public string FileSaveName
+    {
+        get { return fileSaveName; }
     }
 }

@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    InputAction moveAction;
+    private GameManager manager;
+    private InputAction moveAction;
 
 
+    private Vector3 moveValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        moveAction =
+        manager = GameManager.GetInstance();
+        moveAction = manager.GetInputs.actions["Move"];
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+        moveValue = moveAction.ReadValue<Vector2>();
+        gameObject.transform.position = moveValue;
     }
 }

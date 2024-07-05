@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: c6b015a419ead95459506cb056649b86
   - enabled: 1
-    path: Assets/Scenes/Test Axel.unity
-    guid: 6d009df49321ba04c952c44ad2c7879c
+    path: Assets/Scenes/MainScene.unity
+    guid: 73b7db9de72ef944ca785aed3e7ac510
   m_configObjects: {}

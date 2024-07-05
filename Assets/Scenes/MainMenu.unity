@@ -984,7 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9771d8fb70dace5439c1d1eb67049bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameSceneToLoad: Test Axel
+  nameSceneToLoad: MainScene
   BtnLoadGame: {fileID: 955213366}
 --- !u!4 &1271047016
 Transform:

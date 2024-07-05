@@ -33,6 +33,9 @@ public class SaveData : MonoBehaviour
         {
             data = new Data();
             data.notePadData = new List<string>();
+            data.notePadData.Add("Bienvenue dans le bloc-notes !");
+            data.notePadData.Add("");
+            data.notePadData.Add("");
             fileIsExist = false;
         }
         else

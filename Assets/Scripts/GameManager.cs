@@ -13,18 +13,13 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (GetInstance() != null)
+        if (GameManager.Instance != null)
         {
             Destroy(gameObject);
             return;
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    public static GameManager GetInstance()
-    {
-        return Instance;
     }
 
     public void PlayAudioClip(AudioClip clip)

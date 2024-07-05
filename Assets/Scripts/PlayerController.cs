@@ -18,16 +18,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 0.12f;
     [SerializeField] private float mouseSensitivity = 1f;
     [SerializeField] private float upDownLookRange = 80f;
+    [SerializeField] private float grabRange = 100f;
     private Vector2 moveValue;
     private Vector2 lookValue;
     private Vector3 currentMovement;
     private float mouseVerticalRotation = 0;
 
+    private RaycastHit lookingAt;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        manager = GameManager.GetInstance();
+        manager = GameManager.Instance;
         mainCamera = Camera.main;
         characterController = GetComponent<CharacterController>();
         moveAction = manager.GetInputs.actions["Move"];
@@ -64,9 +67,19 @@ public class PlayerController : MonoBehaviour
         isMoving = verticalSpeed != 0 || horizontalSpeed != 0;
     }
 
+    private void LookAtInteratable()
+    {
+        int layerMask = 1 << 6;
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out lookingAt, grabRange, layerMask))
+        {
+            lookingAt.transform.GetComponent<IInteractable>().ToggleOutline();
+        }
+    }
+
     void Update()
     {
         HandleCamRotation();
+        LookAtInteratable();
         moveValue = moveAction.ReadValue<Vector2>();
     }
 

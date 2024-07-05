@@ -3,41 +3,62 @@
     "maps": [
         {
             "name": "PlayerControl",
-            "id": "c282149d-97d2-4a3c-8123-236bbd51a961",
+            "id": "ff1de2e9-bd4f-4b5e-9ceb-5453f4063d55",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "126e2bad-cc77-4791-9eb9-293677c1052b",
+                    "id": "166ae55d-6a4f-45ee-9df4-c21e35428ad9",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-<<<<<<< Updated upstream
-                    "name": "OpenNotePad",
-                    "type": "Button",
-                    "id": "727d6831-fdd5-4545-b772-dced444a1850",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-=======
                     "name": "Look",
                     "type": "Value",
-                    "id": "ee90021f-dfa4-42b4-977b-1d2594b58404",
+                    "id": "374dfb73-2fe2-4a1f-bfd6-08fd7bfeb3bf",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
->>>>>>> Stashed changes
+                },
+                {
+                    "name": "OpenNotepad",
+                    "type": "Button",
+                    "id": "1de8d459-5981-41b5-bda1-d468bcfe9a16",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
+                    "name": "",
+                    "id": "b8a4cf96-3b93-4196-9e34-b7d6743848a1",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d156117-688a-4711-9de5-f711cf9a2944",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenNotepad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "2D Vector",
-                    "id": "4992a674-6d39-4f8b-8b4d-d9871a70102a",
+                    "id": "bb3ac8ed-95b6-4700-9a19-5b4836f7e2d6",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -48,7 +69,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "0199ada4-282f-46b8-a0bc-3b3ccd97e1bb",
+                    "id": "f7e66a52-ce4c-4bd7-8aed-ad5c42f07edb",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -59,7 +80,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "1b92325f-f7c5-4106-a0da-f9b9767c062c",
+                    "id": "9165c68f-ed89-4704-90c1-d71cd86e90f9",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -70,7 +91,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "9770afda-8f2e-4d3d-8fe4-db9e777a4e67",
+                    "id": "b390a451-8289-4390-a635-dfed29a8c4cc",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -81,7 +102,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "f0324075-f24b-4f15-9bca-30d33284a151",
+                    "id": "85f36f60-1f27-4d3b-b05e-90871485d7ca",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -89,26 +110,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-<<<<<<< Updated upstream
-                    "id": "5a2738cf-5187-4b45-be61-9fa1d908c850",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenNotePad",
-=======
-                    "id": "5c6a4a57-5824-4117-bb93-b4714d2a2778",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
->>>>>>> Stashed changes
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

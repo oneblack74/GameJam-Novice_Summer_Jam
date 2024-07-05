@@ -14,7 +14,7 @@ public class NotePadManager : MonoBehaviour
     [SerializeField] private GameObject notePad;
     private bool isNotePadOpen = false;
 
-    private string[] notePadData;
+    private List<string> notePadData;
     private int numPage = 0;
     [SerializeField] private int nbPage = 3;
 
@@ -22,11 +22,17 @@ public class NotePadManager : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         gameManager.inputs.actions["OpenNotePad"].performed += OpenNotePad;
+        notePadData = new List<string>();
         for (int i = 0; i < nbPage; i++)
         {
-            notePadData[i] = "";
+            notePadData.Add("");
         }
         inputField.text = notePadData[0];
+    }
+
+    public void HandlerTextChange()
+    {
+        Debug.Log("Text changed");
     }
 
     private void OpenNotePad(InputAction.CallbackContext context)
@@ -64,26 +70,30 @@ public class NotePadManager : MonoBehaviour
     public void NextPage()
     {
         notePadData[numPage] = inputField.text;
-        numPage++;
-        if (numPage >= notePadData.Length)
+        if (numPage != nbPage - 1)
         {
-            numPage = 0;
-            nextPage.gameObject.SetActive(false);
-            previousPage.gameObject.SetActive(true);
+            numPage++;
+            if (numPage == nbPage - 1)
+                nextPage.gameObject.SetActive(false);
         }
+
+
+        previousPage.gameObject.SetActive(true);
         inputField.text = notePadData[numPage];
     }
 
     public void PreviousPage()
     {
         notePadData[numPage] = inputField.text;
-        numPage--;
-        if (numPage < 0)
+        if (numPage != 0)
         {
-            numPage = notePadData.Length - 1;
-            previousPage.gameObject.SetActive(false);
-            nextPage.gameObject.SetActive(true);
+            numPage--;
+            if (numPage == 0)
+                previousPage.gameObject.SetActive(false);
         }
+
+
+        nextPage.gameObject.SetActive(true);
         inputField.text = notePadData[numPage];
     }
 }

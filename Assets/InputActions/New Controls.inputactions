@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "NotePad",
+                    "name": "OpenNotePad",
                     "type": "Button",
                     "id": "727d6831-fdd5-4545-b772-dced444a1850",
                     "expectedControlType": "Button",
@@ -87,7 +87,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NotePad",
+                    "action": "OpenNotePad",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

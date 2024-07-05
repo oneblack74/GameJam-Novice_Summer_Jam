@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public ItemDefinition ConvertIdToItem(int itemID)
+    {
+        return itemDico[itemID];
+    }
+
     public void PlayAudioClip(AudioClip clip)
     {
         audioSource.clip = clip;

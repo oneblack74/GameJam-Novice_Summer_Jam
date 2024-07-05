@@ -4,8 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable))]
 public class ButtonInteractable : MonoBehaviour, IInteractable
 {
-    public bool Interact()
+    [SerializeField] private GameObject linkActivable;
+
+    public void Interact()
     {
-        throw new System.NotImplementedException();
+        linkActivable.GetComponent<IActivable>().Activate();
     }
 }

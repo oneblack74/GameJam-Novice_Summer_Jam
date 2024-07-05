@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     private string fileSaveName;
 
+    private readonly Dictionary<int, ItemDefinition> itemDico = new();
+
     void Awake()
     {
         if (GameManager.Instance != null)
@@ -20,6 +22,16 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        ItemDefinition[] items = Resources.LoadAll<ItemDefinition>("Items");
+
+        foreach (ItemDefinition item in items)
+        {
+            if (item != null)
+            {
+                itemDico.Add(item.GetID, item);
+            }
+        }
     }
 
     public void PlayAudioClip(AudioClip clip)

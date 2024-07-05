@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         int layerMask = 1 << 6;
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out lookingAt, grabRange, layerMask))
         {
-            lookingAt.transform.GetComponent<IInteractable>().ToggleOutline();
+            lookingAt.transform.GetComponent<Interactable>().ToggleOutline();
         }
     }
 

@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Inventory))]
 public class PlayerController : MonoBehaviour
 {
     private Camera mainCamera;
     private GameManager manager;
     private InputAction moveAction;
     private InputAction lookAction;
+    private InputAction scrollAction;
     private CharacterController characterController;
     private Inventory inventory;
+    private int selectedItem;
+
+
 
     private bool isMoving = false;
     private bool blockPlayer = false;
@@ -20,8 +26,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 1f;
     [SerializeField] private float upDownLookRange = 80f;
     [SerializeField] private float grabRange = 100f;
+    [SerializeField] private Canvas inventoryUI;
     private Vector2 moveValue;
     private Vector2 lookValue;
+    private Vector2 scrollValue;
     private Vector3 currentMovement;
     private float mouseVerticalRotation = 0;
 
@@ -37,8 +45,14 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         moveAction = manager.GetInputs.actions["Move"];
         lookAction = manager.GetInputs.actions["Look"];
+        scrollAction = manager.GetInputs.actions["MouseScroll"];
         manager.LockCursor(true);
         manager.inputs.actions["Use"].performed += Use;
+        inventory = GetComponent<Inventory>();
+        AddItem(manager.ConvertIdToItem(1));
+        AddItem(manager.ConvertIdToItem(2));
+        AddItem(manager.ConvertIdToItem(3));
+        AddItem(manager.ConvertIdToItem(4));
     }
 
     private void HandleCamRotation()
@@ -106,6 +120,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DrawInventory()
+    {
+        // Middle Image
+        inventoryUI.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem().GetIcon;
+        // Down Image
+        inventoryUI.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(-1).GetIcon;
+        // Up Image
+        inventoryUI.transform.GetChild(2).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(1).GetIcon;
+    }
+
+    public ItemDefinition GetSelectedItem(int offset = 0)
+    {
+        if (selectedItem + offset > inventory.GetNumberOfItems())
+        {
+            return inventory.CheckItem(0);
+        }
+        if (selectedItem + offset < 0)
+        {
+            return inventory.CheckItem(inventory.GetNumberOfItems() - 1);
+        }
+        return inventory.CheckItem(selectedItem + offset);
+    }
+
     public void BlockPlayerToggle()
     {
         if (blockPlayer)
@@ -118,6 +155,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void HandleItemSelection()
+    {
+        scrollValue = scrollAction.ReadValue<Vector2>();
+        if (scrollValue.y >= 100)
+        {
+            selectedItem++;
+        }
+        else if (scrollValue.y <= -100)
+        {
+            selectedItem--;
+        }
+        if (selectedItem >= inventory.GetNumberOfItems())
+        {
+            selectedItem = 0;
+        }
+        else if (selectedItem < 0)
+        {
+            selectedItem = inventory.GetNumberOfItems() - 1;
+        }
+    }
+
     void Update()
     {
         if (!blockPlayer)
@@ -125,7 +183,9 @@ public class PlayerController : MonoBehaviour
             HandleCamRotation();
             LookAtInteratable();
             moveValue = moveAction.ReadValue<Vector2>();
+            HandleItemSelection();
         }
+        DrawInventory();
     }
 
     void FixedUpdate()

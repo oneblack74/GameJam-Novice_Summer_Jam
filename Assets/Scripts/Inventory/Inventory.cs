@@ -86,6 +86,47 @@ public class Inventory : MonoBehaviour
         return -1;
     }
 
+    public void SwitchItem(int index, int index2)
+    {
+        Slot tmpSlot = tab[index];
+        tab[index] = tab[index2];
+        tab[index2] = tmpSlot;
+    }
+
+    public int GetNumberOfItems()
+    {
+        int res = 0;
+        foreach (Slot slot in tab)
+        {
+            if (slot.GetItem.GetID != 0)
+            {
+                res++;
+            }
+        }
+        return res;
+    }
+
+    public void SortInventory()
+    {
+        for (int j = 0; j < inventorySize; j++)
+        {
+            for (int i = 0; i < inventorySize; i++)
+            {
+                if (tab[i].GetItem.GetID == 0 && i + 1 < inventorySize)
+                {
+                    SwitchItem(i, i + 1);
+                }
+            }
+        }
+    }
+
+    public ItemDefinition CheckItem(int index)
+    {
+        // Debug.Log(inventorySize);
+        // Debug.Log(GetNumberOfItems());
+        // Debug.Log(tab);
+        return tab[index].GetItem;
+    }
 
     public int GetInventorySize
     {

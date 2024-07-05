@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 8380189097806226229}
   - component: {fileID: 8072950038323018588}
   - component: {fileID: 4759121396840287044}
+  - component: {fileID: 873359668043902989}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -155,8 +156,8 @@ CapsuleCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.25
+  m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8072950038323018588
@@ -175,6 +176,7 @@ MonoBehaviour:
   mouseSensitivity: 0.2
   upDownLookRange: 80
   grabRange: 100
+  inventoryUI: {fileID: 0}
 --- !u!143 &4759121396840287044
 CharacterController:
   m_ObjectHideFlags: 0
@@ -194,10 +196,23 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.75
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &873359668043902989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719470492917446776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61027649cb937764abeaedb83aefc763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 10

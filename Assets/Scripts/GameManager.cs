@@ -27,10 +27,7 @@ public class GameManager : MonoBehaviour
 
         foreach (ItemDefinition item in items)
         {
-            if (item != null)
-            {
-                itemDico.Add(item.GetID, item);
-            }
+            itemDico.Add(item.GetID, item);
         }
     }
 

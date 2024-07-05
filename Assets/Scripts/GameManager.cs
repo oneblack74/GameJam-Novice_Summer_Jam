@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = null;
 
     public PlayerInput inputs;
+    public AudioSource audioSource;
     private string fileSaveName;
 
     void Awake()
@@ -26,16 +27,22 @@ public class GameManager : MonoBehaviour
         return Instance;
     }
 
+    public void PlayAudioClip(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+
+    public void StopAudioClip()
+    {
+        audioSource.Stop();
+    }
+
     void Start()
     {
         Debug.Log("Gamemanger Loaded");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public PlayerInput GetInputs
     {

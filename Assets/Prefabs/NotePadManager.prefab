@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7960785, g: 0.8000001, b: 0.78823537, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -659,8 +659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 4120239380577005037}
-  nextPage: {fileID: 4152335060646283369}
   previousPage: {fileID: 4930572773590700695}
+  nextPage: {fileID: 4152335060646283369}
   notePad: {fileID: 9004997169653696118}
   nbPage: 3
 --- !u!1 &7378363959948451906
@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5918007677232931504
 MonoBehaviour:
   m_ObjectHideFlags: 0

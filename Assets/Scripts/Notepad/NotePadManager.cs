@@ -9,8 +9,8 @@ public class NotePadManager : MonoBehaviour
 {
     GameManager gameManager;
     [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private Button nextPage;
     [SerializeField] private Button previousPage;
+    [SerializeField] private Button nextPage;
     [SerializeField] private GameObject notePad;
     private bool isNotePadOpen = false;
     private bool haveNotePad = false;
@@ -27,7 +27,11 @@ public class NotePadManager : MonoBehaviour
     void Awake()
     {
         gameManager = GameManager.Instance;
-        gameManager.inputs.actions["OpenNotePad"].performed += OpenNotePad;
+    }
+
+    void Start()
+    {
+        gameManager.inputs.actions["OpenNotepad"].performed += OpenNotePad;
         notePadData = new List<string>();
         for (int i = 0; i < nbPage; i++)
         {
@@ -95,8 +99,8 @@ public class NotePadManager : MonoBehaviour
     public void ActiveNotePad()
     {
         haveNotePad = true;
+        notePadData = SaveData.Instance.data.notePadData;
         InfosManager.Instance.OpenInfoPanel("GetNotePad");
-        OpenNotePad(new InputAction.CallbackContext());
     }
 
     public void PreviousPage()

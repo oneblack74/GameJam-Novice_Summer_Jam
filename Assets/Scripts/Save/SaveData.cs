@@ -6,6 +6,8 @@ public class SaveData : MonoBehaviour
 {
     public static SaveData Instance = null;
 
+    public bool fileIsExist = false;
+
     public Data data;
 
     void Awake()
@@ -27,6 +29,22 @@ public class SaveData : MonoBehaviour
     public void Load()
     {
         data = FileManager.LoadFromFile<Data>("notePadData.json");
+        if (data == null)
+        {
+            data = new Data();
+            data.notePadData = new List<string>();
+            fileIsExist = false;
+        }
+        else
+        {
+            fileIsExist = true;
+        }
+    }
+
+    [ContextMenu("SupprimerFichier")]
+    public void SupprimerFichier()
+    {
+        FileManager.DeleteFile("notePadData.json");
     }
 }
 

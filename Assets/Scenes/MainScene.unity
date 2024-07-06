@@ -323,6 +323,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Infosmanager
       objectReference: {fileID: 0}
+    - target: {fileID: 5258133630827128862, guid: 2cc4d1e95e898c143be032d3d5a2c8da, type: 3}
+      propertyPath: infos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258133630827128862, guid: 2cc4d1e95e898c143be032d3d5a2c8da, type: 3}
+      propertyPath: infos.Array.data[1].key
+      value: GetFlashLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258133630827128862, guid: 2cc4d1e95e898c143be032d3d5a2c8da, type: 3}
+      propertyPath: infos.Array.data[1].info
+      value: "The ultraviolet lamp allows you to see invisible objects. To activate
+        it click on \u201Cf\u201D."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

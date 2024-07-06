@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - key: TestEnregistrementVoix
-    sentences: Ceci est un test d'enregistrement de la voix pour les dialogues.
+    sentences: This is a voice recording test for dialogues.
     voice: {fileID: 8300000, guid: fe44e40e9fff60047b28b83be0f86ef6, type: 3}
   textDialogue: {fileID: 3260887911695134317}
   dialoguePanel: {fileID: 4549042574983003911}

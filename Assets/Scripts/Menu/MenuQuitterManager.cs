@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuQuitterManager : MonoBehaviour
 {
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public void GoToMainMenu()
     {
         SaveData.Instance.Save();

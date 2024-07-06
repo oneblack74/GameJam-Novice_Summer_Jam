@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class MenuParametreManager : MonoBehaviour
 {
     [SerializeField] private DimScreen[] dimScreens;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private Toggle fullScreenToggle;
+    [SerializeField] private Slider sensibilitySlider;
+    [SerializeField] private TextMeshProUGUI sensibilityText;
+    private float sensibility = 1.0f;
     private int currentResolutionIndex = 0;
     private bool isFullScreen = true;
 
@@ -21,6 +25,7 @@ public class MenuParametreManager : MonoBehaviour
             options.Add(dimScreen.width + "x" + dimScreen.height);
         }
         resolutionDropdown.AddOptions(options);
+        UpdateSensibility();
     }
 
     public void SelectResolution()
@@ -44,6 +49,17 @@ public class MenuParametreManager : MonoBehaviour
     {
         ApplyResolution();
         FullScreen();
+    }
+
+    public void UpdateSensibility()
+    {
+        sensibility = (float)Math.Round((double)(sensibilitySlider.value), 2);
+        sensibilityText.text = sensibility.ToString();
+    }
+
+    public void ApplySensibility()
+    {
+        // todo Apply sensibility
     }
 }
 

@@ -90,6 +90,7 @@ public class NotePadManager : MonoBehaviour
 
     public void NextPage()
     {
+        SoundEffectManager.Instance.PlaySoundEffect("SE_Paper");
         notePadData[numPage] = inputField.text;
         if (numPage != nbPage - 1)
         {
@@ -113,6 +114,7 @@ public class NotePadManager : MonoBehaviour
 
     public void PreviousPage()
     {
+        SoundEffectManager.Instance.PlaySoundEffect("SE_Paper");
         notePadData[numPage] = inputField.text;
         if (numPage != 0)
         {

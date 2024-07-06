@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
     private void UseFlashlight(InputAction.CallbackContext context)
     {
-        if (!hasUVLight)
+        if (!hasUVLight && !blockPlayer)
         {
             return;
         }

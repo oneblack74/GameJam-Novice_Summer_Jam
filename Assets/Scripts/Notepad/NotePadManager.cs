@@ -67,11 +67,11 @@ public class NotePadManager : MonoBehaviour
                     previousPage.gameObject.SetActive(true);
                     nextPage.gameObject.SetActive(true);
                 }
-                notePadData[numPage] = inputField.text;
             }
             else
             {
                 gameManager.LockCursor(true);
+                notePadData[numPage] = inputField.text;
             }
         }
     }

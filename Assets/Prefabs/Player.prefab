@@ -271,7 +271,7 @@ MonoBehaviour:
   speed: 5
   mouseSensitivity: 0.2
   upDownLookRange: 80
-  grabRange: 100
+  grabRange: 2
   inventoryUI: {fileID: 0}
 --- !u!143 &4759121396840287044
 CharacterController:

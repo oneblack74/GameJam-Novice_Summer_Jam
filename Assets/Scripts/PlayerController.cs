@@ -294,4 +294,9 @@ public class PlayerController : MonoBehaviour
     {
         get { return inventory; }
     }
+
+    public bool IsBlocked
+    {
+        get { return blockPlayer; }
+    }
 }

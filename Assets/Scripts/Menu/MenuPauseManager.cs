@@ -18,6 +18,10 @@ public class MenuPauseManager : MonoBehaviour
 
     private void OpenMenuPause(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.Player.IsBlocked)
+        {
+            return;
+        }
         isMenuPauseOpen = !isMenuPauseOpen;
         menuPause.SetActive(isMenuPauseOpen);
         gameManager.Player.BlockPlayerToggle();

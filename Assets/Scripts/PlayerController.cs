@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
     private Inventory inventory;
     private int selectedItem;
 
-
-
     private bool isMoving = false;
     private bool blockPlayer = false;
 
@@ -50,9 +48,9 @@ public class PlayerController : MonoBehaviour
         manager.inputs.actions["Use"].performed += Use;
         inventory = GetComponent<Inventory>();
         AddItem(manager.ConvertIdToItem(1));
-        //AddItem(manager.ConvertIdToItem(2));
-        //AddItem(manager.ConvertIdToItem(3));
-        //AddItem(manager.ConvertIdToItem(4));
+        AddItem(manager.ConvertIdToItem(2));
+        AddItem(manager.ConvertIdToItem(3));
+        AddItem(manager.ConvertIdToItem(4));
     }
 
     [ContextMenu("AddBook")]

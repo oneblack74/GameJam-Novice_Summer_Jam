@@ -42,7 +42,6 @@ public class Inventory : MonoBehaviour
         return (tab[index].GetItem, tab[index].AddItem(item, quantity).Item2);
     }
 
-
     // Ajoute un item à la première place possible
     public (ItemDefinition, int) AddItemFast(ItemDefinition item, int quantity)
     {
@@ -123,9 +122,6 @@ public class Inventory : MonoBehaviour
 
     public ItemDefinition CheckItem(int index)
     {
-        // Debug.Log(inventorySize);
-        // Debug.Log(GetNumberOfItems());
-        // Debug.Log(tab);
         return tab[index].GetItem;
     }
 

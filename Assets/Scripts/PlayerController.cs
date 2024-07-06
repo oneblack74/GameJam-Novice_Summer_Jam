@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 1f;
     [SerializeField] private float upDownLookRange = 80f;
     [SerializeField] private float grabRange = 100f;
-    [SerializeField] private Canvas inventoryUI;
+    [SerializeField] private GameObject inventoryUI;
     private Vector2 moveValue;
     private Vector2 lookValue;
     private Vector2 scrollValue;
@@ -50,9 +50,15 @@ public class PlayerController : MonoBehaviour
         manager.inputs.actions["Use"].performed += Use;
         inventory = GetComponent<Inventory>();
         AddItem(manager.ConvertIdToItem(1));
-        AddItem(manager.ConvertIdToItem(2));
-        AddItem(manager.ConvertIdToItem(3));
-        AddItem(manager.ConvertIdToItem(4));
+        //AddItem(manager.ConvertIdToItem(2));
+        //AddItem(manager.ConvertIdToItem(3));
+        //AddItem(manager.ConvertIdToItem(4));
+    }
+
+    [ContextMenu("AddBook")]
+    public void AddBook()
+    {
+        AddItem(manager.ConvertIdToItem(1));
     }
 
     private void HandleCamRotation()
@@ -123,11 +129,27 @@ public class PlayerController : MonoBehaviour
     public void DrawInventory()
     {
         // Middle Image
-        inventoryUI.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem().GetIcon;
+        inventoryUI.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem().GetIcon;
         // Down Image
-        inventoryUI.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(-1).GetIcon;
+        if (inventory.GetNumberOfItems() <= 2)
+        {
+            inventoryUI.transform.GetChild(2).gameObject.SetActive(false);
+        }
+        else
+        {
+            inventoryUI.transform.GetChild(2).gameObject.SetActive(true);
+            inventoryUI.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(-1).GetIcon;
+        }
         // Up Image
-        inventoryUI.transform.GetChild(2).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(1).GetIcon;
+        if (inventory.GetNumberOfItems() <= 1)
+        {
+            inventoryUI.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            inventoryUI.transform.GetChild(0).gameObject.SetActive(true);
+            inventoryUI.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(1).GetIcon;
+        }
     }
 
     public ItemDefinition GetSelectedItem(int offset = 0)

@@ -42,6 +42,7 @@ public class Inventory : MonoBehaviour
         return (tab[index].GetItem, tab[index].AddItem(item, quantity).Item2);
     }
 
+
     // Ajoute un item à la première place possible
     public (ItemDefinition, int) AddItemFast(ItemDefinition item, int quantity)
     {

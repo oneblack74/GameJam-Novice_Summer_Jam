@@ -40,7 +40,6 @@ public class NotePadManager : MonoBehaviour
 
     private void OpenNotePad(InputAction.CallbackContext context)
     {
-        Debug.Log("OpenNotePad");
         if (haveNotePad)
         {
             isNotePadOpen = !isNotePadOpen;
@@ -68,6 +67,7 @@ public class NotePadManager : MonoBehaviour
                     previousPage.gameObject.SetActive(true);
                     nextPage.gameObject.SetActive(true);
                 }
+                notePadData[numPage] = inputField.text;
             }
             else
             {
@@ -78,9 +78,8 @@ public class NotePadManager : MonoBehaviour
 
     public void CloseNotePad()
     {
-        isNotePadOpen = false;
-        notePad.SetActive(isNotePadOpen);
-        notePadData[numPage] = inputField.text;
+        isNotePadOpen = true;
+        OpenNotePad(new InputAction.CallbackContext());
     }
 
     public void NextPage()

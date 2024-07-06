@@ -8,8 +8,11 @@ public class Reveal : MonoBehaviour
 
     void Update()
     {
-        Mat.SetVector("MyLightPosition", SpotLight.transform.position);
-        Mat.SetVector("MyLightDirection", -SpotLight.transform.forward);
-        Mat.SetFloat("MyLightAngle", SpotLight.spotAngle);
+        if (Mat && SpotLight)
+        {
+            Mat.SetVector("MyLightPosition", SpotLight.transform.position);
+            Mat.SetVector("MyLightDirection", -SpotLight.transform.forward);
+            Mat.SetFloat("MyLightAngle", SpotLight.spotAngle);
+        }
     }
 }

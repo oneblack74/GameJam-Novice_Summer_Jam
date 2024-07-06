@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -15,8 +16,9 @@ public class PlayerController : MonoBehaviour
     private InputAction scrollAction;
     private CharacterController characterController;
     private Inventory inventory;
-    private int selectedItem;
+    [SerializeField] private GameObject flashlight;
 
+    private int selectedItem;
     private bool isMoving = false;
     private bool blockPlayer = false;
 
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit lookingAt;
     private bool lookAtSomething;
+    private bool hasUVLight = false;
+    private bool flashing = false;
 
 
     // Start is called before the first frame update
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour
         scrollAction = manager.GetInputs.actions["MouseScroll"];
         manager.LockCursor(true);
         manager.inputs.actions["Use"].performed += Use;
+        manager.inputs.actions["Flashlight"].performed += UseFlashlight;
         inventory = GetComponent<Inventory>();
         AddItem(manager.ConvertIdToItem(1));
         // AddItem(manager.ConvertIdToItem(2));
@@ -110,6 +115,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void UseFlashlight(InputAction.CallbackContext context)
+    {
+        if (!hasUVLight)
+        {
+            return;
+        }
+        if (flashing)
+        {
+            flashlight.transform.localPosition = new Vector3(0, -1000, 0);
+            flashing = false;
+        }
+        else
+        {
+            flashlight.transform.localPosition = new Vector3(0, 0, 0);
+            flashing = true;
+        }
+
+    }
+
     public void AddItem(ItemDefinition item)
     {
         inventory.AddItemFast(item, 1);
@@ -157,8 +181,6 @@ public class PlayerController : MonoBehaviour
 
     public ItemDefinition GetSelectedItem(int offset = 0)
     {
-        Debug.Log(selectedItem + offset);
-        Debug.Log(inventory.GetNumberOfItems());
         if (selectedItem + offset >= inventory.GetNumberOfItems())
         {
             return inventory.CheckItem(0);
@@ -201,6 +223,11 @@ public class PlayerController : MonoBehaviour
         {
             selectedItem = inventory.GetNumberOfItems() - 1;
         }
+    }
+
+    public void UnlockUVLight()
+    {
+        hasUVLight = true;
     }
 
     void Update()

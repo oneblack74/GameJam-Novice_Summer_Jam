@@ -2366,7 +2366,7 @@ MonoBehaviour:
   - width: 3840
     height: 2160
   resolutionDropdown: {fileID: 5721596697420794721}
-  fullScreenToggle: {fileID: 0}
+  fullScreenToggle: {fileID: 8016823134382786817}
   sensibilitySlider: {fileID: 882413392409923985}
   sensibilityText: {fileID: 5402287627773425362}
 --- !u!1 &7092168040582236986

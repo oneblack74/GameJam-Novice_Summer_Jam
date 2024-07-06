@@ -36,6 +36,7 @@ public class MainMenuManager : MonoBehaviour
     {
         SaveData.Instance.data = new Data();
         SaveData.Instance.Save();
+        SaveData.Instance.ResetData();
         LoadScene();
     }
 

@@ -10,6 +10,7 @@ public class SaveData : MonoBehaviour
 
     public Data data;
 
+
     void Awake()
     {
         if (Instance != null)
@@ -19,6 +20,7 @@ public class SaveData : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        Load();
     }
 
     public void Save()
@@ -31,11 +33,7 @@ public class SaveData : MonoBehaviour
         data = FileManager.LoadFromFile<Data>("notePadData.json");
         if (data == null)
         {
-            data = new Data();
-            data.notePadData = new List<string>();
-            data.notePadData.Add("Bienvenue dans le bloc-notes !");
-            data.notePadData.Add("");
-            data.notePadData.Add("");
+            ResetData();
             fileIsExist = false;
         }
         else
@@ -49,10 +47,23 @@ public class SaveData : MonoBehaviour
     {
         FileManager.DeleteFile("notePadData.json");
     }
+
+    public void ResetData()
+    {
+        data = new Data();
+        data.notePadData = new List<string>();
+        data.notePadData.Add("");
+        data.notePadData.Add("");
+        data.notePadData.Add("");
+        Save();
+    }
 }
 
 [System.Serializable]
 public class Data
 {
     public List<string> notePadData;
+    public float mouseSensitivity = 1f;
+    public int currentResolutionIndex = 4;
+    public bool isFullScreen = true;
 }

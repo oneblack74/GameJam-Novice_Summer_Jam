@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -39,5 +36,11 @@ public class MenuPauseManager : MonoBehaviour
     {
         SaveData.Instance.Save();
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        SaveData.Instance.Save();
+        Application.Quit();
     }
 }

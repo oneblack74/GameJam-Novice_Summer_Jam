@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Interactable))]
-public class KeyPadInteractable : MonoBehaviour, IInteractable
+public class PCInteractable : MonoBehaviour, IInteractable
 {
-
     [SerializeField] private Transform targetPosition;
     [SerializeField] private Transform cameraposition;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private GameObject crossHair;
-    [SerializeField] private GameObject canvas;
-    [SerializeField] private NotePadManager notePadManager;
     [SerializeField] private float transitionDuration = 1.0f;
+    [SerializeField] private GameObject crossHair;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private NotePadManager notePadManager;
+    [SerializeField] private GameObject[] screen;
+    [SerializeField] private GameObject screenCross;
     private GameManager gameManager;
     private Vector3 initialPosition;
     private Quaternion initialRotation;
-
     private Coroutine currentCoroutine;
     private bool isFocus = false;
 
@@ -25,36 +24,16 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
         gameManager = GameManager.Instance;
     }
 
-    [ContextMenu("Interact")]
     public void Interact()
     {
-        if (currentCoroutine != null)
-        {
-            StopCoroutine(currentCoroutine);
-        }
         notePadManager.CanActive = false;
         initialPosition = cameraposition.position;
         initialRotation = cameraposition.rotation;
-        canvas.SetActive(true);
+        screen[1].SetActive(true);
+        screen[0].SetActive(false);
+        screenCross.SetActive(true);
         currentCoroutine = StartCoroutine(MoveCamera(initialPosition, initialRotation, targetPosition.position, targetPosition.rotation, true));
-
         isFocus = !isFocus;
-    }
-
-    public void ExitView()
-    {
-        if (currentCoroutine != null)
-        {
-            StopCoroutine(currentCoroutine);
-        }
-
-        playerController.BlockPlayerToggle();
-        crossHair.SetActive(true);
-        gameManager.LockCursor(true);
-        canvas.SetActive(false);
-        currentCoroutine = StartCoroutine(MoveCamera(targetPosition.position, targetPosition.rotation, initialPosition, initialRotation));
-        isFocus = !isFocus;
-
     }
 
     private IEnumerator MoveCamera(Vector3 startPos, Quaternion startRot, Vector3 endPos, Quaternion endRot, bool delock = false)
@@ -79,5 +58,23 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
         {
             notePadManager.CanActive = true;
         }
+    }
+
+    [ContextMenu("ExitView")]
+    public void ExitView()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        playerController.BlockPlayerToggle();
+        crossHair.SetActive(true);
+        gameManager.LockCursor(true);
+        screen[1].SetActive(false);
+        screen[2].SetActive(false);
+        screen[0].SetActive(true);
+        screenCross.SetActive(false);
+        currentCoroutine = StartCoroutine(MoveCamera(targetPosition.position, targetPosition.rotation, initialPosition, initialRotation));
+        isFocus = !isFocus;
     }
 }

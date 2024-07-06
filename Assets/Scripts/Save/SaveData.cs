@@ -19,13 +19,14 @@ public class SaveData : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
-
+        CheckFileExist();
     }
 
     void Start()
     {
+        //StartCoroutine(LoadDataWithDelay());
         Load();
+        Debug.Log("In Start: data.notePadData.Count: " + data.notePadData.Count);
     }
 
     public void Save()
@@ -33,18 +34,34 @@ public class SaveData : MonoBehaviour
         FileManager.SaveToFile(data, "notePadData.json");
     }
 
-    public void Load()
+    IEnumerator LoadDataWithDelay()
     {
-        data = FileManager.LoadFromFile<Data>("notePadData.json");
-        if (data == null)
-        {
-            ResetDataWithoutParam();
-            fileIsExist = false;
-        }
-        else
+        yield return new WaitForSeconds(0.1f);
+        Load();
+    }
+
+    public void CheckFileExist()
+    {
+        if (FileManager.FileExist("notePadData.json"))
         {
             fileIsExist = true;
         }
+        else
+        {
+            fileIsExist = false;
+        }
+        Debug.Log("fileIsExist: " + fileIsExist);
+    }
+
+    public void Load()
+    {
+        if (!fileIsExist)
+            ResetDataWithoutParam();
+        else
+            data = FileManager.LoadFromFile<Data>("notePadData.json");
+
+        Debug.Log("In Load : data.notePadData.Count: " + data.notePadData.Count);
+
     }
 
     [ContextMenu("SupprimerFichier")]

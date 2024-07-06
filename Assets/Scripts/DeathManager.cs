@@ -9,7 +9,6 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private int reloadAfterSeconds = 5;
     void Start()
     {
-        notePadManager.LoadNotePadData();
         StartCoroutine(KillPlayer());
     }
 
@@ -31,6 +30,7 @@ public class DeathManager : MonoBehaviour
     IEnumerator ReloadGame()
     {
         yield return new WaitForSeconds(reloadAfterSeconds);
+        SaveData.Instance.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

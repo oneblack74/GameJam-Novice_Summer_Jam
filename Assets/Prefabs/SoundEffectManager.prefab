@@ -144,7 +144,7 @@ MonoBehaviour:
   soundsEffect:
   - name: SE_ActiveFlashlight
     clip: {fileID: 8300000, guid: f0eaf417c00ed5247ab01f18e8f3a583, type: 3}
-  - name: SE_ButtonKeybord
+  - name: SE_ButtonKeyboard
     clip: {fileID: 8300000, guid: fb6329eb99a4a0e4187b8a5a02cf1fd9, type: 3}
   - name: SE_ButtonUI
     clip: {fileID: 8300000, guid: 029b983b2ebe15d44a43c0a5533bcece, type: 3}

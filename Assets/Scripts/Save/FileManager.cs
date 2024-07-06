@@ -30,6 +30,7 @@ public static class FileManager
         // lecture du fichier
         string json = File.ReadAllText(path);
 
+        Debug.Log("Load file");
         // désérialisation du fichier
         return JsonUtility.FromJson<T>(json);
     }
@@ -41,5 +42,14 @@ public static class FileManager
 
         // suppression du fichier
         File.Delete(path);
+    }
+
+    public static bool FileExist(string filename)
+    {
+        // chemin du fichier
+        string path = Path.Combine(Application.persistentDataPath, filename);
+
+        // vérification de l'existence du fichier
+        return File.Exists(path);
     }
 }

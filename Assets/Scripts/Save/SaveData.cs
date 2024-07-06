@@ -66,4 +66,5 @@ public class Data
     public float mouseSensitivity = 1f;
     public int currentResolutionIndex = 4;
     public bool isFullScreen = true;
+    public int deathCounter = 0;
 }

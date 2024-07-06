@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
@@ -249,6 +250,8 @@ public class PlayerController : MonoBehaviour
         transform.GetChild(0).GetComponent<Rigidbody>().useGravity = true;
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<CharacterController>().enabled = false;
+        SaveData.Instance.data.deathCounter++;
+        SaveData.Instance.Save();
     }
 
     void Update()
@@ -261,6 +264,14 @@ public class PlayerController : MonoBehaviour
             HandleItemSelection();
         }
         DrawInventory();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "TriggerEndDemo")
+        {
+            Debug.Log("Fin de la démo");
+        }
     }
 
     void FixedUpdate()

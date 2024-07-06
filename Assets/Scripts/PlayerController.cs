@@ -48,9 +48,9 @@ public class PlayerController : MonoBehaviour
         manager.inputs.actions["Use"].performed += Use;
         inventory = GetComponent<Inventory>();
         AddItem(manager.ConvertIdToItem(1));
-        AddItem(manager.ConvertIdToItem(2));
-        AddItem(manager.ConvertIdToItem(3));
-        AddItem(manager.ConvertIdToItem(4));
+        // AddItem(manager.ConvertIdToItem(2));
+        // AddItem(manager.ConvertIdToItem(3));
+        // AddItem(manager.ConvertIdToItem(4));
     }
 
     [ContextMenu("AddBook")]
@@ -126,10 +126,15 @@ public class PlayerController : MonoBehaviour
 
     public void DrawInventory()
     {
+        int nbItems = inventory.GetNumberOfItems();
+        if (nbItems == 0)
+        {
+            return;
+        }
         // Middle Image
         inventoryUI.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem().GetIcon;
         // Down Image
-        if (inventory.GetNumberOfItems() <= 2)
+        if (nbItems <= 2)
         {
             inventoryUI.transform.GetChild(2).gameObject.SetActive(false);
         }
@@ -139,7 +144,7 @@ public class PlayerController : MonoBehaviour
             inventoryUI.transform.GetChild(2).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(-1).GetIcon;
         }
         // Up Image
-        if (inventory.GetNumberOfItems() <= 1)
+        if (nbItems <= 1)
         {
             inventoryUI.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -152,7 +157,9 @@ public class PlayerController : MonoBehaviour
 
     public ItemDefinition GetSelectedItem(int offset = 0)
     {
-        if (selectedItem + offset > inventory.GetNumberOfItems())
+        Debug.Log(selectedItem + offset);
+        Debug.Log(inventory.GetNumberOfItems());
+        if (selectedItem + offset >= inventory.GetNumberOfItems())
         {
             return inventory.CheckItem(0);
         }

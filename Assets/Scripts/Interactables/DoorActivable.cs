@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
-public class DoorInteractable : MonoBehaviour, IInteractable
+[RequireComponent(typeof(Activable))]
+public class DoorActivable : MonoBehaviour, IActivable
 {
     [SerializeField] private float angleToOpen = 90f;
     [SerializeField] private bool isOpen = false;
@@ -43,7 +43,7 @@ public class DoorInteractable : MonoBehaviour, IInteractable
         transform.rotation = closedRotation;
     }
 
-    public void Interact()
+    public void Activate()
     {
         if (currentCoroutine != null)
         {

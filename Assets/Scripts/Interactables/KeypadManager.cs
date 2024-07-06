@@ -7,7 +7,7 @@ public class KeypadManager : MonoBehaviour
 {
     [SerializeField] private string code;
     [SerializeField] private TextMeshProUGUI screen;
-    [SerializeField] private IInteractable targetValideCode;
+    [SerializeField] private GameObject targetValideCode;
     [SerializeField] private KeyPadInteractable keyPadInteractable;
     private string input;
 
@@ -38,7 +38,7 @@ public class KeypadManager : MonoBehaviour
     {
         if (input == code)
         {
-            targetValideCode.Interact();
+            targetValideCode.GetComponent<IInteractable>().Interact();
             keyPadInteractable.ExitView();
         }
         else

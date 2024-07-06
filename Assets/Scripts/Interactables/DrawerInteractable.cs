@@ -9,7 +9,6 @@ public class DrawerInteractable : MonoBehaviour, IInteractable
     [SerializeField] private bool isOpen = false;
     [SerializeField] private float duration = 1.0f;
 
-    [SerializeField] private Transform target;
 
     private Vector3 closedPosition;
     private Vector3 openPosition;
@@ -19,10 +18,7 @@ public class DrawerInteractable : MonoBehaviour, IInteractable
     {
         closedPosition = transform.position;
         openPosition = closedPosition - distanceToOpen;
-        if (target == null)
-        {
-            target = transform;
-        }
+
     }
 
     public void Interact()

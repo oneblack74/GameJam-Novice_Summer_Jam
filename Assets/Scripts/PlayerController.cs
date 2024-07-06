@@ -135,7 +135,6 @@ public class PlayerController : MonoBehaviour
             flashlight.transform.localPosition = new Vector3(0, 0, 0);
             flashing = true;
         }
-
     }
 
     public void AddItem(ItemDefinition item)
@@ -239,6 +238,16 @@ public class PlayerController : MonoBehaviour
     public void UnlockUVLight()
     {
         hasUVLight = true;
+    }
+
+    public IEnumerator Die()
+    {
+        blockPlayer = true;
+        mainCamera.GetComponent<CameraShake>().start = true;
+        yield return new WaitForSeconds(1);
+        transform.GetChild(0).GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
     }
 
     void Update()

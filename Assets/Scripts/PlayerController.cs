@@ -245,6 +245,7 @@ public class PlayerController : MonoBehaviour
         blockPlayer = true;
         mainCamera.GetComponent<CameraShake>().start = true;
         yield return new WaitForSeconds(1);
+        transform.GetChild(0).GetComponent<SphereCollider>().enabled = true;
         transform.GetChild(0).GetComponent<Rigidbody>().useGravity = true;
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<CharacterController>().enabled = false;

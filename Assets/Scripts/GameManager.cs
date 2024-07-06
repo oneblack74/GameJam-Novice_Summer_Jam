@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         ItemDefinition[] items = Resources.LoadAll<ItemDefinition>("Items");
 

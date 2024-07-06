@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class DeathManager : MonoBehaviour
 {
     [SerializeField] private NotePadManager notePadManager;
-
+    [SerializeField] private int killAfterSeconds = 60;
+    [SerializeField] private int reloadAfterSeconds = 5;
     void Start()
     {
         notePadManager.LoadNotePadData();
@@ -20,7 +21,7 @@ public class DeathManager : MonoBehaviour
 
     IEnumerator KillPlayer()
     {
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(killAfterSeconds);
         notePadManager.CloseNotePad();
         notePadManager.SaveNotePadData();
         Death();
@@ -28,7 +29,7 @@ public class DeathManager : MonoBehaviour
 
     IEnumerator ReloadGame()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(reloadAfterSeconds);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

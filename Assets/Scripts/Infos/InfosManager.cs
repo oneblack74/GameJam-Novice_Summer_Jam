@@ -20,7 +20,6 @@ public class InfosManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void OpenInfoPanel(string key)

@@ -19,7 +19,6 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     [ContextMenu("PlayDialogue")]

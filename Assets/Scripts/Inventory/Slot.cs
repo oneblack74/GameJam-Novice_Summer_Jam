@@ -26,7 +26,7 @@ public class Slot
         {
             ItemDefinition tmp = item;
             this.quantity = 0;
-            // item = manager.ConvertIdToItem(0);
+            item = manager.ConvertIdToItem(0);
             return (tmp, quantity);
         }
         this.quantity -= quantity;

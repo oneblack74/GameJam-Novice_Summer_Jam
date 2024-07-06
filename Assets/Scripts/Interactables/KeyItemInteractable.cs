@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Interactable))]
-public class FlashlightInteractable : MonoBehaviour, IInteractable
+public class KeyItemInteractable : MonoBehaviour, IInteractable
 {
+    [SerializeField] private int itemID;
+
     public void Interact()
     {
-        GameManager.Instance.Player.UnlockUVLight();
+        GameManager.Instance.Player.AddItem(GameManager.Instance.ConvertIdToItem(itemID));
         gameObject.SetActive(false);
     }
 }

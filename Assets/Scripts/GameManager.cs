@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public PlayerInput inputs;
     public AudioSource audioSource;
     private string fileSaveName;
+    [SerializeField] private PlayerController playerController;
 
     private readonly Dictionary<int, ItemDefinition> itemDico = new();
 
@@ -61,6 +62,11 @@ public class GameManager : MonoBehaviour
     public string FileSaveName
     {
         get { return fileSaveName; }
+    }
+
+    public PlayerController Player
+    {
+        get { return playerController; }
     }
 
     public void LockCursor(bool state)

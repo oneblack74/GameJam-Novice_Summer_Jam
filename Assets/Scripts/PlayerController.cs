@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
         int res = inventory.GetItemIndex(item.GetID);
         if (res != -1)
         {
-            inventory.RemoveItem(res, 1);
+            inventory.RemoveItem(res);
         }
     }
 
@@ -248,5 +248,10 @@ public class PlayerController : MonoBehaviour
         {
             HandleMovement();
         }
+    }
+
+    public Inventory Inv
+    {
+        get { return inventory; }
     }
 }

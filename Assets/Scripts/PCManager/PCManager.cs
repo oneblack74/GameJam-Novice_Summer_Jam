@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class PCManager : MonoBehaviour
 {
     [SerializeField] private string Screen1Pseudo;
@@ -24,6 +25,7 @@ public class PCManager : MonoBehaviour
     public void Print()
     {
         feuilleImpression.GetComponent<IActivable>().Activate();
+        screens[2].transform.GetChild(1).GetComponent<Button>().interactable = false;
     }
 
 }

@@ -30,7 +30,7 @@ public class InfosManager : MonoBehaviour
             {
                 infoPanel.SetActive(true);
                 infoText.text = info.info;
-                StartCoroutine(CloseInfoPanelCoroutine(5f));
+                StartCoroutine(CloseInfoPanelCoroutine(10f));
             }
         }
     }

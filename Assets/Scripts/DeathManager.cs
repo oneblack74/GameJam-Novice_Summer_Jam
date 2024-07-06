@@ -23,6 +23,7 @@ public class DeathManager : MonoBehaviour
     {
         yield return new WaitForSeconds(killAfterSeconds);
         notePadManager.CloseNotePad();
+        notePadManager.LoadNotePadData();// TODO : A virer
         notePadManager.SaveNotePadData();
         Death();
     }

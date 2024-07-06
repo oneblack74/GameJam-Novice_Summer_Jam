@@ -495,7 +495,7 @@ PrefabInstance:
     - target: {fileID: 5258133630827128862, guid: 2cc4d1e95e898c143be032d3d5a2c8da, type: 3}
       propertyPath: infos.Array.data[1].info
       value: "The ultraviolet lamp allows you to see invisible objects. To activate
-        it click on \u201Cf\u201D."
+        it click on \u201CF\u201D."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8025,6 +8025,18 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 690479776}
+    - target: {fileID: 4120239380577005037, guid: ad5779aa5a10fb841958892509016422, type: 3}
+      propertyPath: m_OnFocusSelectAll
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120239380577005037, guid: ad5779aa5a10fb841958892509016422, type: 3}
+      propertyPath: m_ResetOnDeActivation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120239380577005037, guid: ad5779aa5a10fb841958892509016422, type: 3}
+      propertyPath: m_RestoreOriginalTextOnEscape
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4152335060646283369, guid: ad5779aa5a10fb841958892509016422, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -26220,6 +26232,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 584130211}
     m_Modifications:
+    - target: {fileID: 739919188057003568, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: m_OnFocusSelectAll
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 739919188057003568, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: m_ResetOnDeActivation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 739919188057003568, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: m_RestoreOriginalTextOnEscape
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3347789019366609126, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -26252,6 +26276,18 @@ PrefabInstance:
       propertyPath: anchorPositionCamera
       value: 
       objectReference: {fileID: 2052626538}
+    - target: {fileID: 6524059276449641991, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: m_OnFocusSelectAll
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524059276449641991, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: m_ResetOnDeActivation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524059276449641991, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: m_RestoreOriginalTextOnEscape
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7007568562997860162, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -42,6 +42,8 @@ public class NotePadManager : MonoBehaviour
             notePadData.Add("");
         }
         inputField.text = notePadData[0];
+        SaveData.Instance.Load();
+        LoadNotePadData();
     }
 
     private void OpenNotePad(InputAction.CallbackContext context)
@@ -138,9 +140,7 @@ public class NotePadManager : MonoBehaviour
     [ContextMenu("LoadNotePadData")]
     public void LoadNotePadData()
     {
-        SaveData.Instance.Load();
         notePadData = SaveData.Instance.data.notePadData;
-        Debug.Log(numPage);
         inputField.text = notePadData[numPage];
     }
 }

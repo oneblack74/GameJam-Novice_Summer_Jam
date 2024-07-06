@@ -39,7 +39,7 @@ public class MenuParametreManager : MonoBehaviour
         isFullScreen = SaveData.Instance.data.isFullScreen;
         fullScreenToggle.isOn = isFullScreen;
 
-        Apply();
+        // Appeler Apply ici casse le jeu
     }
 
     public void SelectResolution()

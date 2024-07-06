@@ -34,9 +34,9 @@ public class SaveData : MonoBehaviour
         FileManager.SaveToFile(data, "notePadData.json");
     }
 
-    IEnumerator LoadDataWithDelay()
+    public IEnumerator LoadDataWithDelay()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
         Load();
     }
 
@@ -59,9 +59,7 @@ public class SaveData : MonoBehaviour
             ResetDataWithoutParam();
         else
             data = FileManager.LoadFromFile<Data>("notePadData.json");
-
         Debug.Log("In Load : data.notePadData.Count: " + data.notePadData.Count);
-
     }
 
     [ContextMenu("SupprimerFichier")]

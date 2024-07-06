@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Inventory))]
@@ -277,7 +278,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.name == "TriggerEndDemo")
         {
-            Debug.Log("Fin de la démo");
+            SceneManager.LoadScene("SceneFin");
         }
     }
 

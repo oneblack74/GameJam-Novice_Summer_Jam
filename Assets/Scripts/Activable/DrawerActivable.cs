@@ -8,6 +8,7 @@ public class DrawerActivable : MonoBehaviour, IActivable
     [SerializeField] private Vector3 distanceToOpen;
     [SerializeField] private bool isOpen = false;
     [SerializeField] private float duration = 1.0f;
+    [SerializeField] private string soundName = "SE_Drawer";
 
 
     private Vector3 closedPosition;
@@ -24,6 +25,7 @@ public class DrawerActivable : MonoBehaviour, IActivable
     private IEnumerator OpenDrawer()
     {
         float elapsedTime = 0f;
+        SoundEffectManager.Instance.PlaySoundEffect(soundName);
         while (elapsedTime < duration)
         {
             transform.position = Vector3.Lerp(closedPosition, openPosition, elapsedTime / duration);
@@ -36,6 +38,7 @@ public class DrawerActivable : MonoBehaviour, IActivable
     private IEnumerator CloseDrawer()
     {
         float elapsedTime = 0f;
+        SoundEffectManager.Instance.PlaySoundEffect(soundName);
         while (elapsedTime < duration)
         {
             transform.position = Vector3.Lerp(openPosition, closedPosition, elapsedTime / duration);

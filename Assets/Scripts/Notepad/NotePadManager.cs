@@ -98,7 +98,6 @@ public class NotePadManager : MonoBehaviour
                 nextPage.gameObject.SetActive(false);
         }
 
-
         previousPage.gameObject.SetActive(true);
         inputField.text = notePadData[numPage];
     }
@@ -122,7 +121,6 @@ public class NotePadManager : MonoBehaviour
                 previousPage.gameObject.SetActive(false);
         }
 
-
         nextPage.gameObject.SetActive(true);
         inputField.text = notePadData[numPage];
     }
@@ -140,6 +138,7 @@ public class NotePadManager : MonoBehaviour
     {
         SaveData.Instance.Load();
         notePadData = SaveData.Instance.data.notePadData;
+        Debug.Log(numPage);
         inputField.text = notePadData[numPage];
     }
 }

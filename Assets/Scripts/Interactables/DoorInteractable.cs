@@ -22,6 +22,7 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     private IEnumerator OpenDoor()
     {
         float elapsedTime = 0f;
+        SoundEffectManager.Instance.PlaySoundEffect("SE_OpenDoor");
         while (elapsedTime < duration)
         {
             transform.rotation = Quaternion.Lerp(closedRotation, openRotation, elapsedTime / duration);
@@ -34,6 +35,7 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     private IEnumerator CloseDoor()
     {
         float elapsedTime = 0f;
+        SoundEffectManager.Instance.PlaySoundEffect("SE_CloseDoor");
         while (elapsedTime < duration)
         {
             transform.rotation = Quaternion.Lerp(openRotation, closedRotation, elapsedTime / duration);

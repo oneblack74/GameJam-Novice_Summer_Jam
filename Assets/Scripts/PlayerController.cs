@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        SoundEffectManager.Instance.PlaySoundEffect("SE_ActiveFlashlight");
         if (flashing)
         {
             flashlight.transform.localPosition = new Vector3(0, -1000, 0);

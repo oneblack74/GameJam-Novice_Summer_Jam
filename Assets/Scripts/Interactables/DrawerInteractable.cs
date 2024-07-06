@@ -8,7 +8,7 @@ public class DrawerInteractable : MonoBehaviour, IInteractable
     [SerializeField] private Vector3 distanceToOpen;
     [SerializeField] private bool isOpen = false;
     [SerializeField] private float duration = 1.0f;
-
+    [SerializeField] private string soundName = "SE_Drawer";
 
     private Vector3 closedPosition;
     private Vector3 openPosition;
@@ -23,10 +23,12 @@ public class DrawerInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        SoundEffectManager.Instance.PlaySoundEffect(soundName);
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);
         }
+
 
         if (isOpen)
         {

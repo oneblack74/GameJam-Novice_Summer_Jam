@@ -38,7 +38,7 @@ public class KeypadManager : MonoBehaviour
     {
         if (input == code)
         {
-            targetValideCode.GetComponent<IInteractable>().Interact();
+            targetValideCode.GetComponent<IActivable>().Activate();
             keyPadInteractable.ExitView();
         }
         else

@@ -3325,7 +3325,7 @@ GameObject:
   - component: {fileID: 1583135204731667011}
   - component: {fileID: 3874857747265484822}
   - component: {fileID: 3874857747265484821}
-  - component: {fileID: 3874857747265484820}
+  - component: {fileID: 3874857747265484823}
   m_Layer: 6
   m_Name: Door-Top 1
   m_TagString: Untagged
@@ -5905,21 +5905,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315422023549136372}
   m_Mesh: {fileID: 2474379212246914238, guid: f1cd6800d51724d4291ee22764292e86, type: 3}
---- !u!114 &3874857747265484820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315422023549136372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ee0f69f5a83c0439bbf76210f499b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angleToOpen: -90
-  isOpen: 0
-  duration: 1
 --- !u!114 &3874857747265484821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5950,6 +5935,21 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &3874857747265484823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315422023549136372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a682fb0643f59b945afb5517a6868a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angleToOpen: -90
+  isOpen: 0
+  duration: 1
 --- !u!4 &3900100451988193077
 Transform:
   m_ObjectHideFlags: 0
@@ -7868,7 +7868,6 @@ GameObject:
   - component: {fileID: 7533831706754910753}
   - component: {fileID: 2281438748299168782}
   - component: {fileID: 7718280196059275779}
-  - component: {fileID: 7718280196059275782}
   - component: {fileID: 7718280196059275781}
   - component: {fileID: 7718280196059275780}
   m_Layer: 0
@@ -8949,7 +8948,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5971614333680124920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc3db8c3d9cd0c8429ed7ea5f15f889d, type: 3}
+  m_Script: {fileID: 11500000, guid: 577aa6179208552488c9c853432f9839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToOpen: {x: 0, y: 0, z: -1.35}
@@ -8964,27 +8963,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5971614333680124920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa85e24552301b244b0e3a312117012e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c9cf4adc7b33ee4e8f336fac68140f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7718280196059275782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971614333680124920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &7718385746251828900
 PrefabInstance:
   m_ObjectHideFlags: 0

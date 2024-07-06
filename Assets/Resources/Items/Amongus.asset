@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a869fb0b1903c44a8e53410d0869bb, type: 3}
   m_Name: Amongus
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 4
   ICON: {fileID: 0}

@@ -15,8 +15,8 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         outline = GetComponent<Outline>();
-        outline.OutlineWidth = 0;
-        outline.OutlineMode = Outline.Mode.OutlineAll;
+        outline.OutlineWidth = 10;
+        outline.enabled = false;
         outline.OutlineColor = new Color(0, 0, 1);
     }
 
@@ -29,7 +29,7 @@ public class Interactable : MonoBehaviour
     {
         lookedAt = true;
         tmpFading = frameFade;
-        outline.OutlineWidth = 10;
+        outline.enabled = true;
     }
 
     void FixedUpdate()
@@ -42,7 +42,7 @@ public class Interactable : MonoBehaviour
         {
             lookedAt = false;
             tmpFading = frameFade;
-            outline.OutlineWidth = 0;
+            outline.enabled = false;
         }
     }
 }

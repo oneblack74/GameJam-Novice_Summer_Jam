@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Interactable))]
 public class DrawerInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private Vector3 distanceToOpen;

@@ -13,6 +13,7 @@ public class DeathManager : MonoBehaviour
         StartCoroutine(KillPlayer());
     }
 
+    [ContextMenu("Kill Player")]
     public void Death()
     {
         StartCoroutine(GameManager.Instance.Player.Die());

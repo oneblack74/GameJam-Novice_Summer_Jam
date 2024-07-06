@@ -20,6 +20,11 @@ public class SaveData : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+    }
+
+    void Start()
+    {
         Load();
     }
 
@@ -33,7 +38,7 @@ public class SaveData : MonoBehaviour
         data = FileManager.LoadFromFile<Data>("notePadData.json");
         if (data == null)
         {
-            ResetData();
+            ResetDataWithoutParam();
             fileIsExist = false;
         }
         else
@@ -48,13 +53,28 @@ public class SaveData : MonoBehaviour
         FileManager.DeleteFile("notePadData.json");
     }
 
-    public void ResetData()
+    public void ResetDataWithoutParam()
     {
+        int tmpCurrentResolutionIndex = 4;
+        bool tmpIsFullScreen = true;
+        float tmpMouseSensitivity = 0.1f;
+
+        if (fileIsExist)
+        {
+            tmpCurrentResolutionIndex = data.currentResolutionIndex;
+            tmpIsFullScreen = data.isFullScreen;
+            tmpMouseSensitivity = data.mouseSensitivity;
+
+        }
+
         data = new Data();
         data.notePadData = new List<string>();
         data.notePadData.Add("");
         data.notePadData.Add("");
         data.notePadData.Add("");
+        data.currentResolutionIndex = tmpCurrentResolutionIndex;
+        data.isFullScreen = tmpIsFullScreen;
+        data.mouseSensitivity = tmpMouseSensitivity;
         Save();
     }
 }
@@ -63,7 +83,7 @@ public class SaveData : MonoBehaviour
 public class Data
 {
     public List<string> notePadData;
-    public float mouseSensitivity = 1f;
+    public float mouseSensitivity = 0.1f;
     public int currentResolutionIndex = 4;
     public bool isFullScreen = true;
     public int deathCounter = 0;

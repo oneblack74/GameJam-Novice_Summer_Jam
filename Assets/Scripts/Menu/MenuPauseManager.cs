@@ -13,6 +13,7 @@ public class MenuPauseManager : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         gameManager.inputs.actions["MenuPause"].performed += OpenMenuPause;
+        menuPause.SetActive(isMenuPauseOpen);
     }
 
     private void OpenMenuPause(InputAction.CallbackContext context)

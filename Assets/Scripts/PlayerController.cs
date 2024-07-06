@@ -24,7 +24,12 @@ public class PlayerController : MonoBehaviour
     private bool blockPlayer = false;
 
     [SerializeField] private float speed = 0.12f;
-    [SerializeField] private float mouseSensitivity = 1f;
+    [SerializeField] private float mouseSensitivity = 0.1f;
+    public float MouseSensitivity
+    {
+        get { return mouseSensitivity; }
+        set { mouseSensitivity = value; }
+    }
     [SerializeField] private float upDownLookRange = 80f;
     [SerializeField] private float grabRange = 100f;
     [SerializeField] private GameObject inventoryUI;
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
         manager.inputs.actions["Use"].performed += Use;
         manager.inputs.actions["Flashlight"].performed += UseFlashlight;
         inventory = GetComponent<Inventory>();
+        mouseSensitivity = SaveData.Instance.data.mouseSensitivity;
     }
 
     [ContextMenu("AddBook")]

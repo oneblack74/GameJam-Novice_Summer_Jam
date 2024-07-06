@@ -39,6 +39,7 @@ public class MenuParametreManager : MonoBehaviour
         isFullScreen = SaveData.Instance.data.isFullScreen;
         fullScreenToggle.isOn = isFullScreen;
 
+        Apply();
     }
 
     public void SelectResolution()
@@ -62,21 +63,25 @@ public class MenuParametreManager : MonoBehaviour
     {
         ApplyResolution();
         FullScreen();
+        ApplySensibility();
         SaveData.Instance.Save();
     }
 
     public void ResetParam()
     {
-        sensibility = SaveData.Instance.data.mouseSensitivity;
+        sensibility = 1f;
+        isFullScreen = true;
+        currentResolutionIndex = 4;
+
+
         sensibilitySlider.value = sensibility;
         sensibilityText.text = sensibility.ToString();
 
-        currentResolutionIndex = SaveData.Instance.data.currentResolutionIndex;
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
-        isFullScreen = SaveData.Instance.data.isFullScreen;
         fullScreenToggle.isOn = isFullScreen;
+
         Apply();
     }
 
@@ -89,10 +94,8 @@ public class MenuParametreManager : MonoBehaviour
     public void ApplySensibility()
     {
         SaveData.Instance.data.mouseSensitivity = sensibility;
-        SaveData.Instance.data.currentResolutionIndex = currentResolutionIndex;
-        SaveData.Instance.data.isFullScreen = isFullScreen;
-        SaveData.Instance.Save();
-        // todo Apply sensibility
+        if (GameManager.Instance != null)
+            GameManager.Instance.Player.MouseSensitivity = sensibility / 10;
     }
 }
 

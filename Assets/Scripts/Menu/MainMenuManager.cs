@@ -34,9 +34,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void NewGame()
     {
-        SaveData.Instance.data = new Data();
         SaveData.Instance.Save();
-        SaveData.Instance.ResetData();
+        SaveData.Instance.ResetDataWithoutParam();
         LoadScene();
     }
 

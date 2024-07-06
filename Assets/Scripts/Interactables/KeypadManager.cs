@@ -11,17 +11,27 @@ public class KeypadManager : MonoBehaviour
     [SerializeField] private KeyPadInteractable keyPadInteractable;
     private string input;
 
+    void Start()
+    {
+        input = "";
+    }
+
     public void AddNumber(string number)
     {
-        if (input.Length >= 4) return;
-        input += number;
-        screen.text = input;
+        if (input.Length < code.Length)
+        {
+            input += number;
+            screen.text = input;
+        }
     }
 
     public void RemoveNumber()
     {
-        input = input.Remove(input.Length - 1);
-        screen.text = input;
+        if (input.Length > 0)
+        {
+            input = input.Remove(input.Length - 1);
+            screen.text = input;
+        }
     }
 
     public void ValidateCode()

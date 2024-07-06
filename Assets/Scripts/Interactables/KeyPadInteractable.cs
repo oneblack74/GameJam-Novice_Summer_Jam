@@ -8,6 +8,7 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] private Transform targetPosition;
     [SerializeField] private Transform cameraposition;
+    [SerializeField] private Transform anchorPositionCamera;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private GameObject crossHair;
     [SerializeField] private GameObject canvas;
@@ -33,9 +34,10 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
             StopCoroutine(currentCoroutine);
         }
         notePadManager.CanActive = false;
-        initialPosition = cameraposition.position;
-        initialRotation = cameraposition.rotation;
+        initialPosition = anchorPositionCamera.position;
+        initialRotation = anchorPositionCamera.rotation;
         canvas.SetActive(true);
+        playerController.BlockPlayerToggle();
         currentCoroutine = StartCoroutine(MoveCamera(initialPosition, initialRotation, targetPosition.position, targetPosition.rotation, true));
 
         isFocus = !isFocus;
@@ -48,17 +50,20 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
             StopCoroutine(currentCoroutine);
         }
 
-        playerController.BlockPlayerToggle();
         crossHair.SetActive(true);
-        gameManager.LockCursor(true);
         canvas.SetActive(false);
-        currentCoroutine = StartCoroutine(MoveCamera(targetPosition.position, targetPosition.rotation, initialPosition, initialRotation));
+        currentCoroutine = StartCoroutine(MoveCamera(targetPosition.position, targetPosition.rotation, anchorPositionCamera.position, anchorPositionCamera.rotation));
         isFocus = !isFocus;
 
     }
 
     private IEnumerator MoveCamera(Vector3 startPos, Quaternion startRot, Vector3 endPos, Quaternion endRot, bool delock = false)
     {
+        if (delock)
+        {
+            crossHair.SetActive(false);
+            gameManager.LockCursor(false);
+        }
         float elapsedTime = 0f;
         while (elapsedTime < transitionDuration)
         {
@@ -71,13 +76,15 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
         cameraposition.rotation = endRot;
         if (delock)
         {
-            playerController.BlockPlayerToggle();
             crossHair.SetActive(false);
             gameManager.LockCursor(false);
         }
         else
         {
             notePadManager.CanActive = true;
+            gameManager.LockCursor(true);
+            playerController.BlockPlayerToggle();
+            cameraposition.localPosition = Vector3.zero;
         }
     }
 }

@@ -14,6 +14,12 @@ public class NotePadManager : MonoBehaviour
     [SerializeField] private GameObject notePad;
     private bool isNotePadOpen = false;
     private bool haveNotePad = false;
+    private bool canActive = true;
+    public bool CanActive
+    {
+        get { return canActive; }
+        set { canActive = value; }
+    }
     [SerializeField] private GameObject crossHair;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private List<string> notePadData;
@@ -40,7 +46,7 @@ public class NotePadManager : MonoBehaviour
 
     private void OpenNotePad(InputAction.CallbackContext context)
     {
-        if (haveNotePad)
+        if (haveNotePad && canActive)
         {
             isNotePadOpen = !isNotePadOpen;
             if (crossHair != null)

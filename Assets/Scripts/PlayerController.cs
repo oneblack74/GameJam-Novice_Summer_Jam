@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             inventoryUI.transform.GetChild(2).gameObject.SetActive(true);
-            inventoryUI.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(-1).GetIcon;
+            inventoryUI.transform.GetChild(2).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem(-1).GetIcon;
         }
         // Up Image
         if (inventory.GetNumberOfItems() <= 1)

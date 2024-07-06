@@ -10,6 +10,7 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
     [SerializeField] private PlayerController playerController;
     [SerializeField] private GameObject crossHair;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private NotePadManager notePadManager;
     [SerializeField] private float transitionDuration = 1.0f;
     private GameManager gameManager;
     private Vector3 initialPosition;
@@ -30,7 +31,7 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
         {
             StopCoroutine(currentCoroutine);
         }
-
+        notePadManager.CanActive = false;
         initialPosition = cameraposition.position;
         initialRotation = cameraposition.rotation;
         canvas.SetActive(true);
@@ -70,8 +71,12 @@ public class KeyPadInteractable : MonoBehaviour, IInteractable
         if (delock)
         {
             playerController.BlockPlayerToggle();
+            crossHair.SetActive(false);
+            gameManager.LockCursor(false);
         }
-        crossHair.SetActive(false);
-        gameManager.LockCursor(false);
+        else
+        {
+            notePadManager.CanActive = true;
+        }
     }
 }

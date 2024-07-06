@@ -9138,6 +9138,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 690479775}
     - target: {fileID: 7353790330858324311, guid: ac9f3006c20cd214b8a605d64760951b, type: 3}
+      propertyPath: notePadManager
+      value: 
+      objectReference: {fileID: 2023119495}
+    - target: {fileID: 7353790330858324311, guid: ac9f3006c20cd214b8a605d64760951b, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 690479776}

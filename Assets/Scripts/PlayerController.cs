@@ -52,10 +52,6 @@ public class PlayerController : MonoBehaviour
         manager.inputs.actions["Use"].performed += Use;
         manager.inputs.actions["Flashlight"].performed += UseFlashlight;
         inventory = GetComponent<Inventory>();
-        AddItem(manager.ConvertIdToItem(1));
-        // AddItem(manager.ConvertIdToItem(2));
-        // AddItem(manager.ConvertIdToItem(3));
-        // AddItem(manager.ConvertIdToItem(4));
     }
 
     [ContextMenu("AddBook")]
@@ -95,11 +91,19 @@ public class PlayerController : MonoBehaviour
 
     private void LookAtInteratable()
     {
-        int layerMask = 1 << 6;
+        int layerMask = LayerMask.GetMask("InteractableObject") | LayerMask.GetMask("OclusionMask");
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out lookingAt, grabRange, layerMask))
         {
-            lookAtSomething = true;
-            lookingAt.transform.GetComponent<Interactable>().ToggleOutline();
+            Interactable found = lookingAt.transform.GetComponent<Interactable>();
+            if (found != null)
+            {
+                lookAtSomething = true;
+                found.ToggleOutline();
+            }
+            else
+            {
+                lookAtSomething = false;
+            }
         }
         else
         {
@@ -153,7 +157,12 @@ public class PlayerController : MonoBehaviour
         int nbItems = inventory.GetNumberOfItems();
         if (nbItems == 0)
         {
+            inventoryUI.SetActive(false);
             return;
+        }
+        else
+        {
+            inventoryUI.SetActive(true);
         }
         // Middle Image
         inventoryUI.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = GetSelectedItem().GetIcon;
@@ -197,10 +206,12 @@ public class PlayerController : MonoBehaviour
         if (blockPlayer)
         {
             blockPlayer = false;
+            manager.inputs.actions["Use"].performed += Use;
         }
         else
         {
             blockPlayer = true;
+            manager.inputs.actions["Use"].performed -= Use;
         }
     }
 

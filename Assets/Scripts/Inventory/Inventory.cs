@@ -29,7 +29,8 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(int index)
     {
         tab[index].RemoveItem(1);
-        Debug.Log(tab[index]);
+        Debug.Log(tab[index].GetItem.GetID);
+        SortInventory();
     }
 
     // retourne l'exces d'item non ajoute

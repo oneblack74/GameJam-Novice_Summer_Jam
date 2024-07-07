@@ -8,6 +8,7 @@ public class SoundEffectManager : MonoBehaviour
     public static SoundEffectManager Instance = null;
 
     private AudioSource audioSource;
+    private AudioSource audioSourceSpacialized;
 
     public SoundEffect[] soundsEffect;
 
@@ -31,6 +32,23 @@ public class SoundEffectManager : MonoBehaviour
             if (soundsEffect[i].name == soundEffectName)
             {
                 audioSource.PlayOneShot(soundsEffect[i].clip);
+                return;
+            }
+        }
+    }
+
+    public void SetAudioSourceSpacialized(AudioSource audioSource)
+    {
+        audioSourceSpacialized = audioSource;
+    }
+
+    public void PlaySoundEffectSpacialized(string soundEffectName)
+    {
+        for (int i = 0; i < soundsEffect.Length; i++)
+        {
+            if (soundsEffect[i].name == soundEffectName)
+            {
+                audioSourceSpacialized.PlayOneShot(soundsEffect[i].clip);
                 return;
             }
         }

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,7 @@ public class MenuPauseManager : MonoBehaviour
 {
     private GameManager gameManager;
     [SerializeField] private GameObject menuPause;
+    [SerializeField] private MenuParametreManager menuParametreManager;
     [SerializeField] private GameObject crossHair;
     private bool isMenuPauseOpen = false;
 
@@ -19,6 +21,7 @@ public class MenuPauseManager : MonoBehaviour
         gameManager = GameManager.Instance;
         gameManager.inputs.actions["MenuPause"].performed += OpenMenuPause;
         menuPause.SetActive(isMenuPauseOpen);
+        menuParametreManager.Init();
     }
 
     private void OpenMenuPause(InputAction.CallbackContext context)

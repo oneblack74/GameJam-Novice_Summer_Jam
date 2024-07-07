@@ -21,6 +21,13 @@ public class MenuParametreManager : MonoBehaviour
 
     private void Start()
     {
+
+        Init();
+    }
+
+    public void Init()
+    {
+        Debug.Log("Init");
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
         foreach (DimScreen dimScreen in dimScreens)
@@ -47,7 +54,13 @@ public class MenuParametreManager : MonoBehaviour
         volumeSlider.value = volume;
         volumeText.text = volume.ToString();
 
-        // Appeler Apply ici casse le jeu
+        Apply();
+    }
+
+    IEnumerator WaitForApply()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Apply();
     }
 
     public void SelectResolution()

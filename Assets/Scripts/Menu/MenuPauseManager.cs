@@ -9,6 +9,11 @@ public class MenuPauseManager : MonoBehaviour
     [SerializeField] private GameObject crossHair;
     private bool isMenuPauseOpen = false;
 
+    void Awake()
+    {
+        isMenuPauseOpen = false;
+    }
+
     void Start()
     {
         gameManager = GameManager.Instance;

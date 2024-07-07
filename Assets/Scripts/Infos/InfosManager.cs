@@ -9,7 +9,7 @@ public class InfosManager : MonoBehaviour
 
     [SerializeField] private GameObject infoPanel;
     [SerializeField] private TextMeshProUGUI infoText;
-
+    [SerializeField] private float timeBeforeClose = 10f;
     [SerializeField] private Infos[] infos;
 
     void Awake()

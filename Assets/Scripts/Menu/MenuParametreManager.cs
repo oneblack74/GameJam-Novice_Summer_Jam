@@ -11,8 +11,11 @@ public class MenuParametreManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private Toggle fullScreenToggle;
     [SerializeField] private Slider sensibilitySlider;
+    [SerializeField] private Slider volumeSlider;
     [SerializeField] private TextMeshProUGUI sensibilityText;
+    [SerializeField] private TextMeshProUGUI volumeText;
     private float sensibility = 1.0f;
+    private float volume = 1.0f;
     private int currentResolutionIndex = 4;
     private bool isFullScreen = true;
 
@@ -27,6 +30,7 @@ public class MenuParametreManager : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         fullScreenToggle.isOn = Screen.fullScreen;
         UpdateSensibility();
+        UpdateVolume();
 
         sensibility = SaveData.Instance.data.mouseSensitivity;
         sensibilitySlider.value = sensibility;
@@ -38,6 +42,10 @@ public class MenuParametreManager : MonoBehaviour
 
         isFullScreen = SaveData.Instance.data.isFullScreen;
         fullScreenToggle.isOn = isFullScreen;
+
+        volume = SaveData.Instance.data.volume;
+        volumeSlider.value = volume;
+        volumeText.text = volume.ToString();
 
         // Appeler Apply ici casse le jeu
     }
@@ -64,6 +72,7 @@ public class MenuParametreManager : MonoBehaviour
         ApplyResolution();
         FullScreen();
         ApplySensibility();
+        ApplyVolume();
         SaveData.Instance.Save();
     }
 
@@ -72,6 +81,7 @@ public class MenuParametreManager : MonoBehaviour
         sensibility = 1f;
         isFullScreen = true;
         currentResolutionIndex = 4;
+        volume = 1f;
 
 
         sensibilitySlider.value = sensibility;
@@ -81,6 +91,9 @@ public class MenuParametreManager : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
 
         fullScreenToggle.isOn = isFullScreen;
+
+        volumeSlider.value = volume;
+        volumeText.text = volume.ToString();
 
         Apply();
     }
@@ -96,6 +109,18 @@ public class MenuParametreManager : MonoBehaviour
         SaveData.Instance.data.mouseSensitivity = sensibility;
         if (GameManager.Instance != null)
             GameManager.Instance.Player.MouseSensitivity = sensibility / 10;
+    }
+
+    public void UpdateVolume()
+    {
+        volume = (float)Math.Round((double)(volumeSlider.value), 2);
+        volumeText.text = volume.ToString();
+    }
+
+    public void ApplyVolume()
+    {
+        SaveData.Instance.data.volume = volume;
+        AudioListener.volume = volume;
     }
 }
 

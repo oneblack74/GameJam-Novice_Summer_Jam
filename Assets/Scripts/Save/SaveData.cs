@@ -73,12 +73,14 @@ public class SaveData : MonoBehaviour
         int tmpCurrentResolutionIndex = 4;
         bool tmpIsFullScreen = true;
         float tmpMouseSensitivity = 0.1f;
+        float tmpVolume = 1.0f;
 
         if (fileIsExist)
         {
             tmpCurrentResolutionIndex = data.currentResolutionIndex;
             tmpIsFullScreen = data.isFullScreen;
             tmpMouseSensitivity = data.mouseSensitivity;
+            tmpVolume = data.volume;
 
         }
 
@@ -90,6 +92,7 @@ public class SaveData : MonoBehaviour
         data.currentResolutionIndex = tmpCurrentResolutionIndex;
         data.isFullScreen = tmpIsFullScreen;
         data.mouseSensitivity = tmpMouseSensitivity;
+        data.volume = tmpVolume;
         Save();
     }
 }
@@ -101,5 +104,6 @@ public class Data
     public float mouseSensitivity = 0.1f;
     public int currentResolutionIndex = 4;
     public bool isFullScreen = true;
+    public float volume = 1.0f;
     public int deathCounter = 0;
 }

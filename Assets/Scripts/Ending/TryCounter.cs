@@ -9,6 +9,6 @@ public class TryCounter : MonoBehaviour
     void Start()
     {
         SaveData.Instance.Load();
-        GetComponent<TextMeshProUGUI>().text = "Réuissit en : " + SaveData.Instance.data.deathCounter.ToString() + " essais";
+        GetComponent<TextMeshProUGUI>().text = "You succeeded in : " + SaveData.Instance.data.deathCounter.ToString() + " attempts";
     }
 }

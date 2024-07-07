@@ -14,7 +14,7 @@ public class Credits : MonoBehaviour
 
     private IEnumerator DisapearEndScreen()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         endScreen.SetActive(false);
         StartCoroutine(Scroll());
     }

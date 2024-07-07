@@ -4084,7 +4084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &748509925
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6149,7 +6149,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2082980141}
         m_TargetAssemblyTypeName: PCManager, Assembly-CSharp
-        m_MethodName: Screen1Connexion
+        m_MethodName: CodeFinalPasswordOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30234,7 +30234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7007568562997860162, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7863312329415108268, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30282,12 +30282,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8220558976539616117, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
       propertyPath: Screen1Password
-      value: grhodl::Xvjfehgelm@f253
+      value: grhodl::Xvjehgelm@253
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220558976539616117, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: CodeFinalPassword
+      value: 4552
       objectReference: {fileID: 0}
     - target: {fileID: 8220558976539616117, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
       propertyPath: feuilleImpression
       value: 
       objectReference: {fileID: 1052973630}
+    - target: {fileID: 8220558976539616117, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: codeFinalInputField
+      value: 
+      objectReference: {fileID: 870268907}
+    - target: {fileID: 8220558976539616117, guid: f3be834ea37e59c4e9a9b90ced4e96ab, type: 3}
+      propertyPath: codeFinalPasswordPage
+      value: 
+      objectReference: {fileID: 1383306927}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

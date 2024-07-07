@@ -102,8 +102,9 @@ public class PlayerController : MonoBehaviour
         int layerMask = LayerMask.GetMask("InteractableObject") | LayerMask.GetMask("OclusionMask");
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out lookingAt, grabRange, layerMask))
         {
+            int foundLayer = lookingAt.transform.GameObject().layer;
             Interactable found = lookingAt.transform.GetComponent<Interactable>();
-            if (found != null)
+            if (foundLayer == 6)
             {
                 lookAtSomething = true;
                 found.ToggleOutline();
@@ -129,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     private void UseFlashlight(InputAction.CallbackContext context)
     {
-        if (!hasUVLight && !blockPlayer)
+        if (!hasUVLight || blockPlayer)
         {
             return;
         }

@@ -26,7 +26,7 @@ public class PadlockManager : MonoBehaviour
         string currentCodeString = string.Join("", currentCode);
         if (currentCodeString == code)
         {
-            activable.GetComponent<IActivable>().Activate();
+            activable.layer = LayerMask.NameToLayer("InteractableObject");
             padlockInteractable.ExitViewAndDestroy();
         }
     }

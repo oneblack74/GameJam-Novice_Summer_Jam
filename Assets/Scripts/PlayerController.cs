@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
     private void Use(InputAction.CallbackContext context)
     {
-        if (lookAtSomething)
+        if (lookAtSomething && !blockPlayer)
         {
             lookingAt.transform.GetComponent<IInteractable>().Interact();
         }

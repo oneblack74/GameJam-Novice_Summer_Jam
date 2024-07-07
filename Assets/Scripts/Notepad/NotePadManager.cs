@@ -47,6 +47,13 @@ public class NotePadManager : MonoBehaviour
         }
         inputField.text = notePadData[0];
         SaveData.Instance.Load();
+        Debug.LogError(SaveData.Instance.data.notePadData.Count);
+        StartCoroutine(WaitingForLoadNotePadData());
+    }
+
+    IEnumerator WaitingForLoadNotePadData()
+    {
+        yield return new WaitForSeconds(0.1f);
         LoadNotePadData();
     }
 
@@ -151,6 +158,7 @@ public class NotePadManager : MonoBehaviour
     public void LoadNotePadData()
     {
         notePadData = SaveData.Instance.data.notePadData;
+        Debug.LogError(notePadData.Count);
         inputField.text = notePadData[numPage];
     }
 }

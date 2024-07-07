@@ -87,6 +87,7 @@ public class MenuParametreManager : MonoBehaviour
         ApplySensibility();
         ApplyVolume();
         SaveData.Instance.Save();
+        Debug.LogError("In Apply : data.notePadData.Count: " + SaveData.Instance.data.notePadData.Count);
     }
 
     public void ResetParam()

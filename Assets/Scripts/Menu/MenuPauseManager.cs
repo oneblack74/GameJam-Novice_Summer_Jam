@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,6 +22,12 @@ public class MenuPauseManager : MonoBehaviour
         gameManager = GameManager.Instance;
         gameManager.inputs.actions["MenuPause"].performed += OpenMenuPause;
         menuPause.SetActive(isMenuPauseOpen);
+        StartCoroutine(WaitingForInit());
+    }
+
+    IEnumerator WaitingForInit()
+    {
+        yield return new WaitForSeconds(0.1f);
         menuParametreManager.Init();
     }
 

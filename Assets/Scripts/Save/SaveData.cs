@@ -59,6 +59,7 @@ public class SaveData : MonoBehaviour
             ResetDataWithoutParam();
         else
             data = FileManager.LoadFromFile<Data>("notePadData.json");
+        Debug.LogError("data.notePadData.Count: " + data.notePadData.Count);
         Debug.Log("In Load : data.notePadData.Count: " + data.notePadData.Count);
     }
 

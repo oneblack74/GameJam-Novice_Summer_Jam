@@ -7,6 +7,7 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
     [SerializeField] private float timeRemaining = 12f;
+    private bool stoped = false;
 
     void Update()
     {
@@ -26,6 +27,15 @@ public class Counter : MonoBehaviour
 
     void FixedUpdate()
     {
-        timeRemaining -= Time.deltaTime;
+        if (!stoped)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
     }
+
+    public void Stop()
+    {
+        stoped = true;
+    }
+
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,9 +8,10 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private NotePadManager notePadManager;
     [SerializeField] private int killAfterSeconds = 60;
     [SerializeField] private int reloadAfterSeconds = 5;
+    private Coroutine coroutine;
     void Start()
     {
-        StartCoroutine(KillPlayer());
+        coroutine = StartCoroutine(KillPlayer());
     }
 
     [ContextMenu("Kill Player")]
@@ -33,5 +35,10 @@ public class DeathManager : MonoBehaviour
         yield return new WaitForSeconds(reloadAfterSeconds);
         SaveData.Instance.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StopCounter()
+    {
+        StopCoroutine(coroutine);
     }
 }

@@ -25,7 +25,9 @@ public class DrawerActivable : MonoBehaviour, IActivable
     private IEnumerator OpenDrawer()
     {
         float elapsedTime = 0f;
+
         SoundEffectManager.Instance.PlaySoundEffect(soundName);
+
         while (elapsedTime < duration)
         {
             transform.position = Vector3.Lerp(closedPosition, openPosition, elapsedTime / duration);

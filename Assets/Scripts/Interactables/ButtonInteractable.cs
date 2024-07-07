@@ -1,16 +1,15 @@
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Interactable))]
 public class ButtonInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject linkActivable = null;
 
     public void Interact()
     {
-        if (!(linkActivable == null))
-        {
-            linkActivable.GetComponent<IActivable>().Activate();
-        }
+        SoundEffectManager.Instance.PlaySoundEffect("SE_ButtonKeyboard");
+        SceneManager.LoadScene("SceneFin");
     }
 }

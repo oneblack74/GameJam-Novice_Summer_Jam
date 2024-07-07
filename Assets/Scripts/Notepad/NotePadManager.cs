@@ -13,6 +13,10 @@ public class NotePadManager : MonoBehaviour
     [SerializeField] private Button nextPage;
     [SerializeField] private GameObject notePad;
     private bool isNotePadOpen = false;
+    public bool IsNotePadOpen
+    {
+        get { return isNotePadOpen; }
+    }
     private bool haveNotePad = false;
     private bool canActive = true;
     public bool CanActive
@@ -58,6 +62,8 @@ public class NotePadManager : MonoBehaviour
             notePad.SetActive(isNotePadOpen);
             if (isNotePadOpen)
             {
+                inputField.Select();
+                inputField.ActivateInputField();
                 gameManager.LockCursor(false);
                 inputField.text = notePadData[numPage];
                 if (numPage == 0)
@@ -103,6 +109,8 @@ public class NotePadManager : MonoBehaviour
 
         previousPage.gameObject.SetActive(true);
         inputField.text = notePadData[numPage];
+        inputField.Select();
+        inputField.ActivateInputField();
     }
 
     [ContextMenu("ActiveNotePad")]
@@ -127,6 +135,8 @@ public class NotePadManager : MonoBehaviour
 
         nextPage.gameObject.SetActive(true);
         inputField.text = notePadData[numPage];
+        inputField.Select();
+        inputField.ActivateInputField();
     }
 
     [ContextMenu("SaveNotePadData")]

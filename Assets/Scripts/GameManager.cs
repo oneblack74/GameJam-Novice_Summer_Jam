@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public AudioClip backgroundMusic;
     private string fileSaveName;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private DeathManager deathManager;
 
     private readonly Dictionary<int, ItemDefinition> itemDico = new();
 
@@ -69,6 +70,11 @@ public class GameManager : MonoBehaviour
     public PlayerController Player
     {
         get { return playerController; }
+    }
+
+    public DeathManager GetDeathManager
+    {
+        get { return deathManager; }
     }
 
     public void LockCursor(bool state)

@@ -279,7 +279,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.name == "TriggerEndDemo")
         {
-            SceneManager.LoadScene("SceneFin");
+            Debug.Log("TestTrigger");
+            GameManager.Instance.GetDeathManager.StopCounter();
+            other.transform.gameObject.SetActive(false);
         }
     }
 

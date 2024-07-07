@@ -8,6 +8,7 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private NotePadManager notePadManager;
     [SerializeField] private int killAfterSeconds = 60;
     [SerializeField] private int reloadAfterSeconds = 5;
+    [SerializeField] private Counter[] counters;
     private Coroutine coroutine;
     void Start()
     {
@@ -39,6 +40,11 @@ public class DeathManager : MonoBehaviour
 
     public void StopCounter()
     {
+        foreach (Counter counter in counters)
+        {
+            counter.Stop();
+        }
+        GameManager.Instance.StopAudioClip();
         StopCoroutine(coroutine);
     }
 }

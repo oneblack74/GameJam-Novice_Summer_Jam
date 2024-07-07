@@ -50,7 +50,7 @@ public class PadlockInteractable : MonoBehaviour, IInteractable
 
     IEnumerator WaitForDestroy()
     {
-        yield return new WaitForSeconds(transitionDuration + 0.1f);
+        yield return new WaitForSeconds(transitionDuration);
         gameObject.SetActive(false);
     }
 

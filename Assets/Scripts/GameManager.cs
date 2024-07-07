@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerInput inputs;
     public AudioSource audioSource;
+    public AudioClip backgroundMusic;
     private string fileSaveName;
     [SerializeField] private PlayerController playerController;
 
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Log("Gamemanger Loaded");
+        audioSource.clip = backgroundMusic;
+        audioSource.Play();
     }
 
 

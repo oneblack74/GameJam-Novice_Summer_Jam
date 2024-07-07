@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: KeyRed
   m_EditorClassIdentifier: 
   ID: 3
-  ICON: {fileID: 21300000, guid: bd35b844ced0e324ca2bf74be702bcdb, type: 3}
+  ICON: {fileID: 21300000, guid: 0c7e947ec0b12344ea01eee585d031ee, type: 3}

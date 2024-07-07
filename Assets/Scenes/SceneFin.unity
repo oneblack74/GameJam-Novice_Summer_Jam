@@ -1250,8 +1250,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Developped for the Novice Summer Jam Series 2024\n\n\n\n\nProgrammation
     & Developpement\n\nBRISSY Axel\nDELCROIX Victor\nMACKOWIAK Carole\n\n\n\n\nModels
-    & Textures\n\nMACKOWIAK Carole\nVNBP - Leo\nAnimatics Studio\npmiller\nknil92\nChafmere\njamesdev\nMayaZ\n\n\n\n\nSounds\n\nPixaBay\n\n\n\n\nTesting
-    \n\nLoutre\nLohik\nNathaantfm\nVarim\nDouroucoulii\nMeeko\nShanKy\n\n\n\n\n\n\n\n\nAnd
+    & Textures\n\nMACKOWIAK Carole\nVNBP - Leo\nAnimatics Studio\npmiller\nknil92\nChafmere\nMayaZ\n\n\n\n\nSounds\n\nPixaBay\n\n\n\n\nTesting
+    \n\nLoutre\nNathaantfm\nLohik\nVarim\nDouroucoulii\nMeeko\nShanKy\n\n\n\n\n\n\n\n\nAnd
     Thank You For Playing !\n\n\n\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1808,7 +1808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.89411765}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

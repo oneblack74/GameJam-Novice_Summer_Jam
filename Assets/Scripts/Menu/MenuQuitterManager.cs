@@ -8,6 +8,7 @@ public class MenuQuitterManager : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void GoToMainMenu()

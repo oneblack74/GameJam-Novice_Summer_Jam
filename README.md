@@ -1,6 +1,5 @@
 # 🕒 60 Seconds to Escape
-
-    🎮 Game made for the Novice Summer Jam Series 2024: Mini Jam 2
+> 🎮 Game made for the Novice Summer Jam Series 2024: Mini Jam 2
 ---
 ### 🔥 Concept
 
@@ -9,7 +8,7 @@ You only have one minute to find a way out!
 Look around, find clues, and take notes. The room resets every 60 seconds, but your notepad doesn’t!
 Stay sharp, and maybe… just maybe… you’ll escape in time.
 
-    💡 Tip: Use your notepad wisely – it’s your only persistent tool.
+> 💡 Tip: Use your notepad wisely – it’s your only persistent tool.
 ---
 ### 📋 Controls & Notes
 
